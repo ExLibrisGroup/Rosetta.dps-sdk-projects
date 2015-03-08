@@ -36,9 +36,9 @@ import com.exlibris.core.sdk.consts.Enum;
 
 public class FullFlowExample {
 
-	static final String userName = "admin1";
+	static final String userName = "user123";
 	static final String institution = "INS00";
-	static final String password = "a12345678A";
+	static final String password = "pass123";
 	static final String materialflowId = "5";
 	static final String depositSetId = "1";
 
