@@ -9,7 +9,7 @@ public class PdsTest {
 		try {
 			PdsClient pds = PdsClient.getInstance();
 			pds.init("http://il-dtldev04:8992/pds",false);
-			String pdsHandle =  pds.login("INS00", "admin1", "a12345678A");
+			String pdsHandle =  pds.login("INS00", "user123", "pass123");
 
 			System.out.println("User authenticated (PDS_HANDLE=" + pdsHandle + ")");
 
