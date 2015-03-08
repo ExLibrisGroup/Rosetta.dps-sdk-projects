@@ -30,8 +30,8 @@ public class ProducerWSTest {
 		/* get pds handle */
 		String pdsHandle = null;
 
-		String userName = "admin1";
-		String password = "a12345678A";
+		String userName = "user123";
+		String password = "pass123";
 		String institution = "INS00";
 
 		try {
