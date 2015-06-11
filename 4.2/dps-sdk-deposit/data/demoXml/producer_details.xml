@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fr:producer_info xmlns:fr="http://www.exlibrisgroup.com/xsd/dps/backoffice/service">
+	<status>ACTIVE</status>
+	<expiry_date>08/02/2010</expiry_date>
+  	<telephone_1>1800-888-999</telephone_1>
+  	<telephone_2/>
+  	<web_site/>
+	<zip_code>68745</zip_code>
+	<email>mail@info.org</email>
+	<institution>my institution</institution>
+	<department>my department</department>
+ 	<street>Emek Hachula 13</street>
+ 	<suburb/>
+	<city>Michil</city>
+	<country>Israel</country>
+	<authoritative_name>Meat and Wool New Zealand</authoritative_name>
+	<account_type>GROUP</account_type>
+	<email_notify>Y</email_notify>
+	<notes/>
+	<local_field_1/>
+	<fax>9999999</fax>
+	<negotiator_id>68754</negotiator_id>
+	<producerProfile_id>1</producerProfile_id>
+</fr:producer_info>
