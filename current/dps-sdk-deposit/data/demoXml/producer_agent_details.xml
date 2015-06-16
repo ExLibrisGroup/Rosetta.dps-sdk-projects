@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fr:user_info xmlns:fr="http://www.exlibrisgroup.com/xsd/dps/backoffice/service">
+	<first_name>Tomer</first_name>
+	<last_name>Yatskan</last_name>
+	<user_name>producerAgent123</user_name>
+	<expiry_date/>
+  	<job_title>Programmer</job_title>
+ 	<street>Hertsog</street>
+ 	<suburb/>
+  	<city>Jerusalem</city>
+  	<country>Israel</country>
+  	<zip>999999</zip>
+  	<email_address>zvif@exlibris.co.il</email_address>
+  	<web_site_url/>
+   	<telephone_1>02-66666666</telephone_1>
+   	<telephone_2/>
+   	<user_gruop/>
+</fr:user_info>
