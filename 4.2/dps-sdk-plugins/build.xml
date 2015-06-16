@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project basedir="." default="build-all" name="dps-sdk-plugins">
+	<property environment="env" />
+	<property name="ECLIPSE_HOME" value="../../dev/eclipse" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.7" />
+	<property name="source" value="1.7" />
+	<property name="version" value="4.2.0" />
+	<path id="dps-sdk-plugins.classpath">
+		<pathelement location="lib/dps-sdk-${version}.jar" />
+		<fileset dir="resources/lib" includes="*.jar" />
+	</path>
+
+	<target depends="clean-all, prepare-dirs, copy-resources, build-UnzipDecomposerPlugin, build-DCReplaceRepositoryTaskPlugin, build-RegexpFieldValidatorPlugin, build-DummyMDExtractorPlugin,
+					build-JPEGHULMDExtractor1_10Plugin, build-JPEG2000HULMDExtractor1_10Plugin, build-AIFFHULMDExtractor1_10Plugin, build-ASCIIHULMDExtractor1_10Plugin,
+					build-BYTESTREAMHULMDExtractor1_10Plugin, build-GIFHULMDExtractor1_10Plugin, build-HTMLHULMDExtractor1_10Plugin, build-XMLHULMDExtractor1_10Plugin,
+					build-PDFHULMDExtractor1_10Plugin, build-TIFFHULMDExtractor1_10Plugin, build-UTF8HULMDExtractor1_10Plugin, build-WaveHULMDExtractor1_10Plugin, build-NetAppStoragePlugin"
+					name="build-all" />
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-UnzipDecomposerPlugin">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="dps-sdk-plugins.classpath" />
+		</javac>
+		<jar destfile="./generated-plugins/UnzipDecomposerPlugin.jar" basedir="target" includes="bin/unzip_script.sh, PLUGIN-INF/metadata_Unzip-Decomposer.xml" />
+	</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-DCReplaceRepositoryTaskPlugin">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="dps-sdk-plugins.classpath" />
+		</javac>
+		<jar destfile="./generated-plugins/DCReplaceRepositoryTaskPlugin.jar" basedir="target" includes="com/exlibris/rosetta/plugins/repositoryTask/DCReplacePlugin.class, PLUGIN-INF/metadata_DCReplacePlugin.xml" />
+	</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-RegexpFieldValidatorPlugin">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="dps-sdk-plugins.classpath" />
+		</javac>
+		<jar destfile="./generated-plugins/RegexpFieldValidatorPlugin.jar" basedir="target" includes="com/exlibris/rosetta/plugins/fieldValidation/RegexpFieldValidatorPlugin.class, PLUGIN-INF/metadata_RegexpFieldValidator.xml" />
+	</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-DummyMDExtractorPlugin">
+			<echo message="${ant.project.name}: ${ant.file}" />
+			<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+				<src path="src" />
+				<classpath refid="dps-sdk-plugins.classpath" />
+			</javac>
+			<jar destfile="./generated-plugins/DummyMDExtractorPlugin.jar" basedir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/DummyMDExtractorPlugin.class, PLUGIN-INF/metadata_DummyMDExtractor.xml" />
+		</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-JPEGHULMDExtractor1_10Plugin">
+				<echo message="${ant.project.name}: ${ant.file}" />
+				<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+					<src path="src" />
+					<classpath refid="dps-sdk-plugins.classpath" />
+				</javac>
+				<jar destfile="./generated-plugins/JPEGHULMDExtractor1_10Plugin.jar">
+					<fileset dir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/base/*.class, com/exlibris/rosetta/repository/plugin/mdExtractor/jpeg/*.class, PLUGIN-INF/metadata_JPEGHULMDExtractor.xml, conf/jhove.conf, conf/jhoveConfig.xsd" />
+					<fileset dir="." includes="resources/lib/jhove*1.10.jar" />
+				</jar>
+	</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-JPEG2000HULMDExtractor1_10Plugin">
+					<echo message="${ant.project.name}: ${ant.file}" />
+					<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+						<src path="src" />
+						<classpath refid="dps-sdk-plugins.classpath" />
+					</javac>
+					<jar destfile="./generated-plugins/JPEG2000HULMDExtractor1_10Plugin.jar">
+						<fileset dir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/base/*.class, com/exlibris/rosetta/repository/plugin/mdExtractor/jpeg2000/*.class, PLUGIN-INF/metadata_JPEG2000HULMDExtractor.xml, conf/jhove.conf, conf/jhoveConfig.xsd" />
+						<fileset dir="." includes="resources/lib/jhove*1.10.jar" />
+					</jar>
+		</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-AIFFHULMDExtractor1_10Plugin">
+					<echo message="${ant.project.name}: ${ant.file}" />
+					<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+						<src path="src" />
+						<classpath refid="dps-sdk-plugins.classpath" />
+					</javac>
+					<jar destfile="./generated-plugins/AIFFHULMDExtractor1_10Plugin.jar">
+						<fileset dir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/base/*.class, com/exlibris/rosetta/repository/plugin/mdExtractor/aiff/*.class, PLUGIN-INF/metadata_AIFFHULMDExtractor.xml, conf/jhove.conf, conf/jhoveConfig.xsd" />
+						<fileset dir="." includes="resources/lib/jhove*1.10.jar" />
+					</jar>
+		</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-ASCIIHULMDExtractor1_10Plugin">
+						<echo message="${ant.project.name}: ${ant.file}" />
+						<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+							<src path="src" />
+							<classpath refid="dps-sdk-plugins.classpath" />
+						</javac>
+						<jar destfile="./generated-plugins/ASCIIHULMDExtractor1_10Plugin.jar">
+							<fileset dir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/base/*.class, com/exlibris/rosetta/repository/plugin/mdExtractor/ascii/*.class, PLUGIN-INF/metadata_ASCIIHULMDExtractor.xml, conf/jhove.conf, conf/jhoveConfig.xsd" />
+							<fileset dir="." includes="resources/lib/jhove*1.10.jar" />
+						</jar>
+			</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-BYTESTREAMHULMDExtractor1_10Plugin">
+					<echo message="${ant.project.name}: ${ant.file}" />
+					<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+						<src path="src" />
+						<classpath refid="dps-sdk-plugins.classpath" />
+					</javac>
+					<jar destfile="./generated-plugins/BYTESTREAMHULMDExtractor1_10Plugin.jar">
+						<fileset dir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/base/*.class, com/exlibris/rosetta/repository/plugin/bytestream/jpeg/*.class, PLUGIN-INF/metadata_BYTESTREAMHULMDExtractor.xml, conf/jhove.conf, conf/jhoveConfig.xsd" />
+						<fileset dir="." includes="resources/lib/jhove*1.10.jar" />
+					</jar>
+		</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-GIFHULMDExtractor1_10Plugin">
+						<echo message="${ant.project.name}: ${ant.file}" />
+						<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+							<src path="src" />
+							<classpath refid="dps-sdk-plugins.classpath" />
+						</javac>
+						<jar destfile="./generated-plugins/GIFHULMDExtractor1_10Plugin.jar">
+							<fileset dir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/base/*.class, com/exlibris/rosetta/repository/plugin/mdExtractor/gif/*.class, PLUGIN-INF/metadata_GIFHULMDExtractor.xml, conf/jhove.conf, conf/jhoveConfig.xsd"  />
+							<fileset dir="." includes="resources/lib/jhove*1.10.jar" />
+						</jar>
+			</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-HTMLHULMDExtractor1_10Plugin">
+						<echo message="${ant.project.name}: ${ant.file}" />
+						<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+							<src path="src" />
+							<classpath refid="dps-sdk-plugins.classpath" />
+						</javac>
+						<jar destfile="./generated-plugins/HTMLHULMDExtractor1_10Plugin.jar">
+							<fileset dir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/base/*.class, com/exlibris/rosetta/repository/plugin/mdExtractor/html/*.class, PLUGIN-INF/metadata_HTMLHULMDExtractor.xml, conf/jhove.conf, conf/jhoveConfig.xsd" />
+							<fileset dir="." includes="resources/lib/jhove*1.10.jar" />
+						</jar>
+			</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-XMLHULMDExtractor1_10Plugin">
+						<echo message="${ant.project.name}: ${ant.file}" />
+						<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+							<src path="src" />
+							<classpath refid="dps-sdk-plugins.classpath" />
+						</javac>
+						<jar destfile="./generated-plugins/XMLHULMDExtractor1_10Plugin.jar">
+							<fileset dir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/base/*.class, com/exlibris/rosetta/repository/plugin/mdExtractor/xml/*.class, PLUGIN-INF/metadata_XMLHULMDExtractor.xml, conf/jhove.conf, conf/schema_files.zip, conf/jhoveConfig.xsd" />
+							<fileset dir="." includes="resources/lib/jhove*1.10.jar" />
+							<fileset dir="." includes="resources/lib/zip4j-1.3.2.jar" />
+						</jar>
+			</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-PDFHULMDExtractor1_10Plugin">
+							<echo message="${ant.project.name}: ${ant.file}" />
+							<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+								<src path="src" />
+								<classpath refid="dps-sdk-plugins.classpath" />
+							</javac>
+							<jar destfile="./generated-plugins/PDFHULMDExtractor1_10Plugin.jar">
+								<fileset dir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/base/*.class, com/exlibris/rosetta/repository/plugin/mdExtractor/pdf/*.class, PLUGIN-INF/metadata_PDFHULMDExtractor.xml, conf/jhove.conf, conf/jhoveConfig.xsd" />
+								<fileset dir="." includes="resources/lib/jhove*1.10.jar" />
+							</jar>
+				</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-TIFFHULMDExtractor1_10Plugin">
+							<echo message="${ant.project.name}: ${ant.file}" />
+							<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+								<src path="src" />
+								<classpath refid="dps-sdk-plugins.classpath" />
+							</javac>
+							<jar destfile="./generated-plugins/TIFFHULMDExtractor1_10Plugin.jar">
+								<fileset dir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/base/*.class, com/exlibris/rosetta/repository/plugin/mdExtractor/tiff/*.class, PLUGIN-INF/metadata_TIFFHULMDExtractor.xml, conf/jhove.conf, conf/jhoveConfig.xsd" />
+								<fileset dir="." includes="resources/lib/jhove*1.10.jar" />
+							</jar>
+				</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-UTF8HULMDExtractor1_10Plugin">
+							<echo message="${ant.project.name}: ${ant.file}" />
+							<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+								<src path="src" />
+								<classpath refid="dps-sdk-plugins.classpath" />
+							</javac>
+							<jar destfile="./generated-plugins/UTF8HULMDExtractor1_10Plugin.jar">
+								<fileset dir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/base/*.class, com/exlibris/rosetta/repository/plugin/mdExtractor/utf8/*.class, PLUGIN-INF/metadata_UTF8HULMDExtractor.xml, conf/jhove.conf, conf/jhoveConfig.xsd" />
+								<fileset dir="." includes="resources/lib/jhove*1.10.jar" />
+							</jar>
+				</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-WaveHULMDExtractor1_10Plugin">
+							<echo message="${ant.project.name}: ${ant.file}" />
+							<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+								<src path="src" />
+								<classpath refid="dps-sdk-plugins.classpath" />
+							</javac>
+							<jar destfile="./generated-plugins/WaveHULMDExtractor1_10Plugin.jar">
+								<fileset dir="target" includes="com/exlibris/rosetta/repository/plugin/mdExtractor/base/*.class, com/exlibris/rosetta/repository/plugin/mdExtractor/wave/*.class, PLUGIN-INF/metadata_WaveHULMDExtractor.xml, conf/jhove.conf, conf/jhoveConfig.xsd" />
+								<fileset dir="." includes="resources/lib/jhove*1.10.jar" />
+							</jar>
+				</target>
+
+	<target depends="clean-all, prepare-dirs, copy-resources" name="build-NetAppStoragePlugin">
+									<echo message="${ant.project.name}: ${ant.file}" />
+									<javac debug="true" debuglevel="${debuglevel}" destdir="./target" source="${source}" target="${target}">
+										<src path="src" />
+										<classpath refid="dps-sdk-plugins.classpath" />
+									</javac>
+									<jar destfile="./generated-plugins/CustomNetAppStoragePlugin.jar">
+										<fileset dir="target" includes="com/exlibris/dps/repository/plugin/storage/netapp/*.class, com/exlibris/dps/repository/plugin/storage/netapp/client/*.class, PLUGIN-INF/metadata_NetAppPlugin.xml" />
+										<fileset dir="." includes="resources/lib/commons*.jar" />
+										<fileset dir="." includes="resources/lib/axis.jar" />
+										<fileset dir="." includes="resources/lib/http*.jar" />
+										<fileset dir="." includes="resources/lib/jackson-core-asl-1.5.2.jar" />
+										<fileset dir="." includes="resources/lib/json-simple-1.1.jar" />
+										<fileset dir="." includes="resources/lib/xmlbeans-2.3.0.jar" />
+									</jar>
+						</target>
+
+	<target name="prepare-dirs">
+		<mkdir dir="target" />
+		<mkdir dir="generated-plugins" />
+	</target>
+
+	<target name="clean-all">
+		<delete dir="./target" />
+		<delete dir="./generated-plugins" />
+	</target>
+
+	<target name="copy-resources">
+		<copy todir="./target">
+			<fileset dir="resources" />
+		</copy>
+	</target>
+
+	<target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+		<copy todir="${ant.library.dir}">
+			<fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar" />
+		</copy>
+		<unzip dest="${ant.library.dir}">
+			<patternset includes="jdtCompilerAdapter.jar" />
+			<fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar" />
+		</unzip>
+	</target>
+</project>
