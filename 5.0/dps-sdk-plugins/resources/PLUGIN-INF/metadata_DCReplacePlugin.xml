@@ -1,0 +1,76 @@
+<pl:metadata-config xmlns:pl="http://www.exlibrisgroup.com/Plugins/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <pl:pluginTypeName>RepositoryTaskPlugin</pl:pluginTypeName>
+  <pl:deployName>DCReplacePluginExample</pl:deployName>
+  <pl:className>com.exlibris.rosetta.plugins.repositoryTask.DCReplacePlugin</pl:className>
+  <pl:initParameters>
+  <fr:x_form  xmlns:fr="http://com/exlibris/digitool/common/forms/xmlbeans">
+	<form_name>DCReplace Plugin Parameters</form_name>
+	<description>DCReplace Plugin Parameters</description>
+	<grid_x>1</grid_x>
+	<md_format>1</md_format>
+	<x_fields>
+		<x_field>
+			<field_name>find</field_name>
+			<label>Find</label>
+			<ui_tool_tip>Find</ui_tool_tip>
+			<single>true</single>
+			<default_value></default_value>
+			<pos_x>1</pos_x>
+			<pos_y>1</pos_y>
+			<mandatory>true</mandatory>
+			<x_logic_type>String</x_logic_type>
+			<x_ui_type>TextField</x_ui_type>
+			<x_options></x_options>
+		</x_field>
+		<x_field>
+			<field_name>replace_with</field_name>
+			<label>Replace with</label>
+			<ui_tool_tip>replace with</ui_tool_tip>
+			<single>true</single>
+			<default_value></default_value>
+			<pos_x>1</pos_x>
+			<pos_y>2</pos_y>
+			<mandatory>true</mandatory>
+			<x_logic_type>String</x_logic_type>
+			<x_ui_type>TextField</x_ui_type>
+			<x_options></x_options>
+		</x_field>
+		<x_field>
+			<field_name>dc</field_name>
+			<label>DC field</label>
+			<ui_tool_tip>DC field</ui_tool_tip>
+			<single>true</single>
+			<default_value>dc:title</default_value>
+			<pos_x>1</pos_x>
+			<pos_y>3</pos_y>
+			<mandatory>true</mandatory>
+			<x_logic_type>String</x_logic_type>
+			<x_ui_type>TextField</x_ui_type>
+			<x_options></x_options>
+		</x_field>
+	</x_fields>
+	</fr:x_form>
+  </pl:initParameters>
+  <pl:description>Finds and replaces a DublinCore field value</pl:description>
+  <pl:version>1</pl:version>
+  <pl:materialType>DIGITAL</pl:materialType>
+  <pl:module>Repository</pl:module>
+  <pl:generalType>TASK</pl:generalType>
+  <pl:publicApi>N</pl:publicApi>
+  <pl:implType>java</pl:implType>
+  <pl:contactPerson>
+    <contact_info xmlns="http://www.exlibrisgroup.com/Plugins/1.0/">
+     <contactType>admin</contactType>
+      <firstName>Exlibris</firstName>
+      <lastName>Ltd</lastName>
+      <telephone1>(054)485-2328</telephone1>
+      <telephone2></telephone2>
+      <email>yaarac@exlibris.co.il</email>
+      <address1>Agodat Asport2 Building 9</address1>
+      <address2></address2>
+      <city>Jerusalem</city>
+      <zipCode>00000</zipCode>
+      <country>Israel</country>
+    </contact_info>
+  </pl:contactPerson>
+</pl:metadata-config>
