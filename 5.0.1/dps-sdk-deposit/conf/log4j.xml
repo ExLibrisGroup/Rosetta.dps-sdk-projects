@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  Log4j Configuration                                                  -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<!-- $Id: log4j.xml 18470 2010-03-18 10:25:03Z zvifa $ -->
+
+<!--
+   | For more configuration information and examples see the Jakarta Log4j
+   | owebsite: http://jakarta.apache.org/log4j
+ -->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+   <!-- ================================= -->
+   <!-- Preserve messages in a local file -->
+   <!-- ================================= -->
+
+   <!-- A time/date based rolling appender -->
+   <appender name="FILE" class="org.apache.log4j.FileAppender">
+   	  <param name="File" value="/exlibris/dps/dps-sdk.log" />
+      <param name="Append" value="false" />
+   	  <param name="Threshold" value="INFO" />
+   	  <layout class="org.apache.log4j.PatternLayout">
+   		 <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n" />
+   	  </layout>
+   </appender>
+
+   <!-- ============================== -->
+   <!-- Append messages to the console -->
+   <!-- ============================== -->
+
+   <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+      <param name="Target" value="System.out"/>
+      <param name="Threshold" value="INFO"/>
+      <layout class="org.apache.log4j.PatternLayout">
+         <!-- The default pattern: Date Priority [Category] Message\n -->
+         <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n"/>
+      </layout>
+   </appender>
+
+   <!-- ================ -->
+   <!-- Limit categories -->
+   <!-- ================ -->
+
+   <!-- Limit Ex Libris common classes to INFO, comment this setting in order to view debug messages also -->
+   <category name="com.exlibris">
+      <priority value="INFO"/>
+   </category>
+
+   <!-- Limit the org.apache category to INFO as its DEBUG is verbose -->
+   <category name="org.apache">
+      <priority value="INFO"/>
+   </category>
+
+   <!-- ======================= -->
+   <!-- Setup the Root category -->
+   <!-- ======================= -->
+
+   <root>
+      <appender-ref ref="CONSOLE"/>
+      <appender-ref ref="FILE"/>
+   </root>
+
+</log4j:configuration>
