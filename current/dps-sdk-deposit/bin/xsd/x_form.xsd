@@ -293,6 +293,15 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="readonly" type="xs:boolean" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						If the value is "true" then the component will
+						be editable only on creation.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="mandatory" type="xs:boolean" minOccurs="0"
 				maxOccurs="1">
 				<xs:annotation>

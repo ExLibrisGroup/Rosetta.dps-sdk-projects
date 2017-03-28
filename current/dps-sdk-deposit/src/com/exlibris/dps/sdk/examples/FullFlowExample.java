@@ -3,9 +3,9 @@ package com.exlibris.dps.sdk.examples;
 import gov.loc.mets.DivType;
 import gov.loc.mets.FileType;
 import gov.loc.mets.MetsDocument;
-import gov.loc.mets.StructMapType;
 import gov.loc.mets.MetsDocument.Mets;
 import gov.loc.mets.MetsType.FileSec.FileGrp;
+import gov.loc.mets.StructMapType;
 
 import java.io.File;
 import java.net.URL;
@@ -16,13 +16,14 @@ import javax.xml.namespace.QName;
 
 import org.apache.xmlbeans.XmlOptions;
 
+import com.exlibris.core.sdk.consts.Enum;
 import com.exlibris.core.sdk.formatting.DublinCore;
 import com.exlibris.core.sdk.utils.FileUtil;
 import com.exlibris.digitool.common.dnx.DnxDocument;
 import com.exlibris.digitool.common.dnx.DnxDocumentHelper;
 import com.exlibris.digitool.deposit.service.xmlbeans.DepositDataDocument;
-import com.exlibris.digitool.deposit.service.xmlbeans.DepositResultDocument;
 import com.exlibris.digitool.deposit.service.xmlbeans.DepositDataDocument.DepositData;
+import com.exlibris.digitool.deposit.service.xmlbeans.DepositResultDocument;
 import com.exlibris.digitool.deposit.service.xmlbeans.DepositResultDocument.DepositResult;
 import com.exlibris.dps.DepositWebServices_Service;
 import com.exlibris.dps.ProducerWebServices;
@@ -31,8 +32,7 @@ import com.exlibris.dps.SipStatusInfo;
 import com.exlibris.dps.SipWebServices_Service;
 import com.exlibris.dps.sdk.deposit.IEParser;
 import com.exlibris.dps.sdk.deposit.IEParserFactory;
-import com.exlibris.dps.sdk.pds.PdsClient;
-import com.exlibris.core.sdk.consts.Enum;
+import com.exlibris.dps.sdk.pds.HeaderHandlerResolver;
 
 public class FullFlowExample {
 
@@ -152,17 +152,6 @@ public class FullFlowExample {
             FileUtil.writeFile(ieXML, metsDoc.xmlText(opt));
 
 			// 3. Place the SIP directory in a folder that can be accessed by the Rosetta application (using FTP is a valid approach)
-
-			// 4. Authenticate using the PDS authentication API
-
-			// Connecting to PDS
-			PdsClient pds = PdsClient.getInstance();
-			pds.init(PDS_URL,false);
-			String pdsHandle = pds.login(institution, userName, password);
-			System.out.println("pdsHandle: " + pdsHandle);
-
-			// 5. Submit Deposit
-
 			ProducerWebServices producerWebServices = new ProducerWebServices_Service(new URL(PRODUCER_WSDL_URL),new QName("http://dps.exlibris.com/", "ProducerWebServices")).getProducerWebServicesPort();
 			String producerAgentId = producerWebServices.getInternalUserIdByExternalId(userName);
 			String xmlReply = producerWebServices.getProducersOfProducerAgent(producerAgentId);
@@ -174,7 +163,13 @@ public class FullFlowExample {
 			System.out.println("Producer ID: " + producerId);
 
 			//submit
-			String retval = new DepositWebServices_Service(new URL(DEPOSIT_WSDL_URL),new QName("http://dps.exlibris.com/", "DepositWebServices")).getDepositWebServicesPort().submitDepositActivity(pdsHandle,materialflowId, subDirectoryName, producerId, depositSetId);
+			
+			// 4. Set Authentication Header on service
+			DepositWebServices_Service depWS = new DepositWebServices_Service(new URL(DEPOSIT_WSDL_URL),new QName("http://dps.exlibris.com/", "DepositWebServices"));
+			depWS.setHandlerResolver(new HeaderHandlerResolver("admin1", "a12345678A", "INS00"));
+			
+			// 5. Submit Deposit
+			String retval = depWS.getDepositWebServicesPort().submitDepositActivity(null,materialflowId, subDirectoryName, producerId, depositSetId);
 			System.out.println("Submit Deposit Result: " + retval);
 
 			DepositResultDocument depositResultDocument = DepositResultDocument.Factory.parse(retval);
