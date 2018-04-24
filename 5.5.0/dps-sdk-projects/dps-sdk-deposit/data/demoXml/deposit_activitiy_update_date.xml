@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deposit_activity_list xmlns="http://www.exlibrisgroup.com/xsd/dps/deposit/service">
+	<is_error>false</is_error>
+	<error_description></error_description>
+	<total_records>5198</total_records>
+	<records>
+		<record id="11">
+			<deposit_activity_id>43</deposit_activity_id>
+			<creation_date>23/08/2009</creation_date>
+			<status>Approved</status>
+			<title>the book from the oven</title>
+			<producer_agent_id>763</producer_agent_id>
+			<submit_date>23/08/2009</submit_date>
+			<update_date>23/08/2009</update_date>
+			<sip_id>1723</sip_id>
+			<producer_id>644638</producer_id>
+			<sip_reason />
+		</record>
+		<record id="12">
+			<deposit_activity_id>44</deposit_activity_id>
+			<creation_date>23/08/2009</creation_date>
+			<status>Inprocess</status>
+			<title>grimms onlie</title>
+			<producer_agent_id>763</producer_agent_id>
+			<submit_date>23/08/2009</submit_date>
+			<update_date>29/09/2009</update_date>
+			<sip_id>185413</sip_id>
+			<producer_id>644638</producer_id>
+			<sip_reason />
+		</record>
+		<record id="13">
+			<deposit_activity_id>45</deposit_activity_id>
+			<creation_date>23/08/2009</creation_date>
+			<status>Approved</status>
+			<title>fx support for dummeis</title>
+			<producer_agent_id>763</producer_agent_id>
+			<submit_date>23/08/2009</submit_date>
+			<update_date>01/11/2009</update_date>
+			<sip_id>369103</sip_id>
+			<producer_id>644638</producer_id>
+			<sip_reason />
+		</record>
+		<record id="14">
+			<deposit_activity_id>46</deposit_activity_id>
+			<creation_date>23/08/2009</creation_date>
+			<status>Declined</status>
+			<title>the little monkey</title>
+			<producer_agent_id>763</producer_agent_id>
+			<submit_date>23/08/2009</submit_date>
+			<update_date>02/11/2009</update_date>
+			<sip_id>552793</sip_id>
+			<producer_id>644638</producer_id>
+			<sip_reason>inappropriate content</sip_reason>
+		</record>
+	</records>
+</deposit_activity_list>
