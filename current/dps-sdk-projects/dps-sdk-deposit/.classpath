@@ -6,7 +6,7 @@
 	<classpathentry kind="lib" path="data"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.10.jar"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="lib/dps-sdk-5.5.0.jar">
+	<classpathentry kind="lib" path="lib/dps-sdk-6.0.0.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/dps-sdk-deposit/lib/dps-sdk-5.5.0-javadoc.jar!/"/>
 		</attributes>

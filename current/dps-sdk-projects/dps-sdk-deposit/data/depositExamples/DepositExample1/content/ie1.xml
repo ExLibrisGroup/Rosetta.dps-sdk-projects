@@ -5,7 +5,7 @@
         <dc:record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <dc:creator>Exlibris</dc:creator>
           <dc:identifier>ISBN 1-56389-016-X</dc:identifier>
-          <dc:title>SDK -TEST DC</dc:title>
+          <dc:title>SDK - TEST DC</dc:title>
         </dc:record>
       </mets:xmlData>
     </mets:mdWrap>
@@ -59,7 +59,7 @@
                 <key id="label">test</key>
                 <key id="fileMIMEType">image/jpeg</key>
                 <key id="note">note to test</key>
-                <key id="fileOriginalPath">C:\Users\zvif\Documents\tmp\dps-sdk-5.5.0\dps-sdk-projects\dps-sdk-deposit\..\dps-sdk-deposit\data\depositExamples\DepositExample1\content\streams\Sunset.jpg</key>
+                <key id="fileOriginalPath">C:\dps\Rosetta-V3_0_0\sdk-projects\dps-sdk-deposit\..\dps-sdk-deposit\data\depositExamples\DepositExample1\content\streams\Sunset.jpg</key>
                 <key id="fileSizeBytes">122631</key>
               </record>
             </section>
@@ -96,17 +96,28 @@
     </mets:digiprovMD>
   </mets:amdSec>
   <mets:fileSec>
-    <mets:fileGrp ID="rep1" ADMID="rep1-amd">
-      <mets:file ID="fid1-1" ADMID="fid1-1-amd">
+    <mets:fileGrp USE="VIEW" ID="rep1" ADMID="rep1-amd">
+      <mets:file ID="fid1-1" MIMETYPE="image/jpeg" ADMID="fid1-1-amd">
         <mets:FLocat LOCTYPE="URL" xlin:href="Sunset.jpg" xmlns:xlin="http://www.w3.org/1999/xlink"/>
       </mets:file>
     </mets:fileGrp>
   </mets:fileSec>
   <mets:structMap ID="rep1-1" TYPE="PHYSICAL">
-    <mets:div LABEL="Preservation Master">
+    <mets:div LABEL="PRESERVATION_MASTER;VIEW">
       <mets:div LABEL="Table of Contents">
-        <mets:div LABEL="test" TYPE="FILE">
-          <mets:fptr FILEID="fid1-1"/>
+      		<mets:div LABEL="test" TYPE="FILE">
+        		<mets:fptr FILEID="fid1-1"/>
+        	</mets:div>
+      </mets:div>
+    </mets:div>
+  </mets:structMap>
+  <mets:structMap ID="rep1-2" TYPE="LOGICAL">
+    <mets:div LABEL="Test Struct Map">
+      <mets:div LABEL="Table of Contents">
+      	<mets:div LABEL="Chapter 1">
+        	<mets:div LABEL="Page 1" TYPE="FILE">
+          		<mets:fptr FILEID="fid1-1"/>
+          	</mets:div>
         </mets:div>
       </mets:div>
     </mets:div>
