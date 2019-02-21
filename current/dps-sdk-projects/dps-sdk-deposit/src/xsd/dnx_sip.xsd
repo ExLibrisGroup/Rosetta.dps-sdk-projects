@@ -20,6 +20,7 @@
 				<xsd:alternative test="@id='webHarvesting'" type="webHarvestingSection"/>
 				<xsd:alternative test="@id='objectIdentifier'" type="objectIdentifierSection"/>
 				<xsd:alternative test="@id='preservationLevel'" type="preservationLevelSection"/>
+				<xsd:alternative test="@id='significantProperties'" type="significantPropertiesSection"/>
 				<xsd:alternative test="@id='fileFixity'" type="fileFixitySection"/>
 				<xsd:alternative test="@id='creatingApplication'" type="creatingApplicationSection"/>
 				<xsd:alternative test="@id='inhibitors'" type="inhibitorsSection"/>
@@ -45,7 +46,7 @@
 				<xsd:alternative type="errorType"/>
 			</xsd:element>
 		</xsd:all>
-		<xsd:assert test=" count(*[@id='generalIECharacteristics']) = (0,1) and  count(*[@id='generalRepCharacteristics']) = (0,1) and  count(*[@id='generalFileCharacteristics']) = (0,1) and  count(*[@id='objectCharacteristics']) = (0,1) and  count(*[@id='CMS']) = (0,1) and  count(*[@id='webHarvesting']) = (0,1) and  count(*[@id='objectIdentifier']) = (0,1) and  count(*[@id='preservationLevel']) = (0,1) and  count(*[@id='fileFixity']) = (0,1) and  count(*[@id='creatingApplication']) = (0,1) and  count(*[@id='inhibitors']) = (0,1) and  count(*[@id='objectCharacteristicsExtension']) = (0,1) and  count(*[@id='environment']) = (0,1) and  count(*[@id='environmentDependencies']) = (0,1) and  count(*[@id='environmentSoftware']) = (0,1) and  count(*[@id='envSoftwareRegistry']) = (0,1) and  count(*[@id='environmentHardware']) = (0,1) and  count(*[@id='envHardwareRegistry']) = (0,1) and  count(*[@id='environmentExtension']) = (0,1) and  count(*[@id='signatureInformation']) = (0,1) and  count(*[@id='signatureInformationExtension']) = (0,1) and  count(*[@id='relationship']) = (0,1) and  count(*[@id='linkingIEIdentifier']) = (0,1) and  count(*[@id='event']) = (0,1) and  count(*[@id='linkingRightsStatementIdentifier']) = (0,1) and  count(*[@id='accessRightsPolicy']) = (0,1) and  count(*[@id='retentionPolicy']) = (0,1) and  count(*[@id='grantedRightsStatement']) = (0,1) and  count(*[@id='workProduct']) = (0,1) and  count(*[@id='Collection']) = (0,1)"/>
+		<xsd:assert test=" count(*[@id='generalIECharacteristics']) = (0,1) and  count(*[@id='generalRepCharacteristics']) = (0,1) and  count(*[@id='generalFileCharacteristics']) = (0,1) and  count(*[@id='objectCharacteristics']) = (0,1) and  count(*[@id='CMS']) = (0,1) and  count(*[@id='webHarvesting']) = (0,1) and  count(*[@id='objectIdentifier']) = (0,1) and  count(*[@id='preservationLevel']) = (0,1) and  count(*[@id='significantProperties']) = (0,1) and  count(*[@id='fileFixity']) = (0,1) and  count(*[@id='creatingApplication']) = (0,1) and  count(*[@id='inhibitors']) = (0,1) and  count(*[@id='objectCharacteristicsExtension']) = (0,1) and  count(*[@id='environment']) = (0,1) and  count(*[@id='environmentDependencies']) = (0,1) and  count(*[@id='environmentSoftware']) = (0,1) and  count(*[@id='envSoftwareRegistry']) = (0,1) and  count(*[@id='environmentHardware']) = (0,1) and  count(*[@id='envHardwareRegistry']) = (0,1) and  count(*[@id='environmentExtension']) = (0,1) and  count(*[@id='signatureInformation']) = (0,1) and  count(*[@id='signatureInformationExtension']) = (0,1) and  count(*[@id='relationship']) = (0,1) and  count(*[@id='linkingIEIdentifier']) = (0,1) and  count(*[@id='event']) = (0,1) and  count(*[@id='linkingRightsStatementIdentifier']) = (0,1) and  count(*[@id='accessRightsPolicy']) = (0,1) and  count(*[@id='retentionPolicy']) = (0,1) and  count(*[@id='grantedRightsStatement']) = (0,1) and  count(*[@id='workProduct']) = (0,1) and  count(*[@id='Collection']) = (0,1)"/>
 	</xsd:complexType>
 
 	<xsd:complexType name="generalIECharacteristicsSection">
@@ -241,6 +242,27 @@
 						</xsd:element>
 					</xsd:sequence>
 					<xsd:assert test="count(*[@id='preservationLevelValue']) = 1 and count(*[@id='preservationLevelRole']) = (0,1) and count(*[@id='preservationLevelRole']) = (0,1) and count(*[@id='preservationLevelDateAssigned']) = (0,1) and count(*[@id='preservationLevelType']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="significantPropertiesSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='significantPropertiesType'" type="nullableString"/>
+							<xsd:alternative test="@id='significantPropertiesValue'" type="nullableString"/>
+							<xsd:alternative test="@id='significantPropertiesExtension'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='significantPropertiesType']) = (0,1) and count(*[@id='significantPropertiesValue']) = (0,1) and count(*[@id='significantPropertiesValue']) = (0,1)"/>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
