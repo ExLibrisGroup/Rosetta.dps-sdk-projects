@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- February 2014 -->
-<!-- Version 3.2.2 -->
+<!-- Rosetta Version 3.2.2 -->
 <!-- Change History -->
 <!-- Version 3.2.2 Changes:
 	1. mets_rosetta.xsd now conforms to xsd 1.1 only. Please use tools that support this version.
@@ -10,9 +10,30 @@
 	   Rosetta will validate and store, but the IE Viewer will not deliver custom structMap types.
 	   These will be treated as custom, which will be validated according to the LOC validation schema (version 1.6).
 -->
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.exlibrisgroup.com/xsd/dps/rosettaMets" targetNamespace="http://www.exlibrisgroup.com/xsd/dps/rosettaMets" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+<!-- December 2018 -->
+<!-- Rosetta Version 6.0.0 -->
+<!-- Change History -->
+<!-- Version 6.0.0 Changes:
+	1. Added validation of DNX.
+-->
+
+<!-- February 2019 -->
+<!-- Rosetta Version 6.0.0.1 -->
+<!-- Change History -->
+<!-- Version 6.0.0.1 Changes:
+	1. Multiple techMD elements are allowed in amdSec
+-->
+
+<xsd:schema version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:dnx="http://www.exlibrisgroup.com/dps/dnx"
+	xmlns="http://www.exlibrisgroup.com/xsd/dps/rosettaMets"
+	targetNamespace="http://www.exlibrisgroup.com/xsd/dps/rosettaMets"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
-	<xsd:import namespace="http://www.exlibrisgroup.com/dps/dnx" schemaLocation="file:@@dps.dev@@/system.dir/dps-sdk-6.0.0/dps-sdk-projects/dps-sdk-deposit/src/xsd/dnx_sip.xsd"/>
+
+	<xsd:import namespace="http://www.exlibrisgroup.com/dps/dnx" schemaLocation="dnx_sip.xsd"/>
 	<xsd:element name="mets">
 		<xsd:annotation>
 			<xsd:documentation>METS: Metadata Encoding and Transmission Standard.
@@ -59,8 +80,9 @@
 						metadata), sourceMD (analog/digital source metadata), and
 						digiprovMD (digital provenance metadata). Each of these
 						subsections follows the mdSecType model, they include metadata
-						within the METS hub document (mdWrap). Single techMD, rightsMD,
-						sourceMD and digiprovMD elements are allowed per amdSec.
+						within the METS hub document (mdWrap). Single rightsMD and digiprovMD
+						elements are allowed per amdSec. Multiple techMD and sourceMD elements
+						are allowed per amdSec.
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
@@ -127,7 +149,7 @@
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
-			<xsd:element name="techMD" type="mdSecType" minOccurs="0">
+			<xsd:element name="techMD" type="mdSecType" minOccurs="0" maxOccurs="unbounded">
 				<xsd:annotation>
 					<xsd:documentation>techMD: technical metadata.
 						The techMD element provides a wrapper around a generic metadata
