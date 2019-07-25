@@ -288,7 +288,7 @@
 							<xsd:alternative type="errorType"/>
 						</xsd:element>
 					</xsd:sequence>
-					<xsd:assert test="count(*[@id='preservationLevelValue']) = 1 and count(*[@id='preservationLevelRole']) = (0,1) and count(*[@id='preservationLevelRole']) = (0,1) and count(*[@id='preservationLevelDateAssigned']) = (0,1) and count(*[@id='preservationLevelType']) = (0,1)"/>
+					<xsd:assert test="count(*[@id='preservationLevelValue']) = 1 and count(*[@id='preservationLevelRole']) = (0,1) and count(*[@id='preservationLevelDateAssigned']) = (0,1) and count(*[@id='preservationLevelType']) = (0,1)"/>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
@@ -309,7 +309,7 @@
 							<xsd:alternative type="errorType"/>
 						</xsd:element>
 					</xsd:sequence>
-					<xsd:assert test="count(*[@id='significantPropertiesType']) = (0,1) and count(*[@id='significantPropertiesValue']) = (0,1) and count(*[@id='significantPropertiesValue']) = (0,1)"/>
+					<xsd:assert test="count(*[@id='significantPropertiesType']) = (0,1) and count(*[@id='significantPropertiesValue']) = (0,1)"/>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
@@ -363,7 +363,7 @@
 							<xsd:alternative type="errorType"/>
 						</xsd:element>
 					</xsd:sequence>
-					<xsd:assert test="count(*[@id='agent']) = (0,1) and count(*[@id='formatRegistry']) = (0,1) and count(*[@id='formatRegistryId']) = (0,1) and count(*[@id='formatRegistryRole']) = (0,1) and count(*[@id='formatName']) = 1 and count(*[@id='formatVersion']) = (0,1) and count(*[@id='formatDescription']) = (0,1) and count(*[@id='formatDescription']) = (0,1) and count(*[@id='exactFormatIdentification']) = (0,1) and count(*[@id='mimeType']) = (0,1) and count(*[@id='agentVersion']) = (0,1) and count(*[@id='agentSignatureVersion']) = (0,1) and count(*[@id='identificationMethod']) = (0,1) and count(*[@id='formatLibraryVersion']) = (0,1)"/>
+					<xsd:assert test="count(*[@id='agent']) = (0,1) and count(*[@id='formatRegistry']) = (0,1) and count(*[@id='formatRegistryId']) = (0,1) and count(*[@id='formatRegistryRole']) = (0,1) and count(*[@id='formatName']) = 1 and count(*[@id='formatVersion']) = (0,1) and count(*[@id='formatDescription']) = (0,1) and count(*[@id='exactFormatIdentification']) = (0,1) and count(*[@id='mimeType']) = (0,1) and count(*[@id='agentVersion']) = (0,1) and count(*[@id='agentSignatureVersion']) = (0,1) and count(*[@id='identificationMethod']) = (0,1) and count(*[@id='formatLibraryVersion']) = (0,1)"/>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
@@ -671,7 +671,7 @@
 							<xsd:alternative type="errorType"/>
 						</xsd:element>
 					</xsd:sequence>
-					<xsd:assert test="count(*[@id='signatureInformationEncoding']) = 1 and count(*[@id='signer']) = (0,1) and count(*[@id='signatureMethod']) = 1 and count(*[@id='signatureValue']) = 1 and count(*[@id='signatureValidationRules']) = 1 and count(*[@id='signatureValidationRules']) = 1 and count(*[@id='keyInformation']) = (0,1)"/>
+					<xsd:assert test="count(*[@id='signatureInformationEncoding']) = 1 and count(*[@id='signer']) = (0,1) and count(*[@id='signatureMethod']) = 1 and count(*[@id='signatureValue']) = 1 and count(*[@id='signatureValidationRules']) = 1 and count(*[@id='keyInformation']) = (0,1)"/>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>

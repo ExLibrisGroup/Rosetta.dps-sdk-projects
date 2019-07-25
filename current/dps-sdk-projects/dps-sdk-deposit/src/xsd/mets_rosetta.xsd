@@ -28,6 +28,7 @@
 <xsd:schema version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:dnx="http://www.exlibrisgroup.com/dps/dnx"
+	xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1"
 	xmlns="http://www.exlibrisgroup.com/xsd/dps/rosettaMets"
 	targetNamespace="http://www.exlibrisgroup.com/xsd/dps/rosettaMets"
 	elementFormDefault="qualified" attributeFormDefault="unqualified">

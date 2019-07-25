@@ -241,7 +241,7 @@
 							<xsd:alternative type="errorType"/>
 						</xsd:element>
 					</xsd:sequence>
-					<xsd:assert test="count(*[@id='preservationLevelValue']) = 1 and count(*[@id='preservationLevelRole']) = (0,1) and count(*[@id='preservationLevelRole']) = (0,1) and count(*[@id='preservationLevelDateAssigned']) = (0,1) and count(*[@id='preservationLevelType']) = (0,1)"/>
+					<xsd:assert test="count(*[@id='preservationLevelValue']) = 1 and count(*[@id='preservationLevelRole']) = (0,1) and count(*[@id='preservationLevelDateAssigned']) = (0,1) and count(*[@id='preservationLevelType']) = (0,1)"/>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
@@ -262,7 +262,7 @@
 							<xsd:alternative type="errorType"/>
 						</xsd:element>
 					</xsd:sequence>
-					<xsd:assert test="count(*[@id='significantPropertiesType']) = (0,1) and count(*[@id='significantPropertiesValue']) = (0,1) and count(*[@id='significantPropertiesValue']) = (0,1)"/>
+					<xsd:assert test="count(*[@id='significantPropertiesType']) = (0,1) and count(*[@id='significantPropertiesValue']) = (0,1)"/>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
@@ -518,7 +518,7 @@
 							<xsd:alternative type="errorType"/>
 						</xsd:element>
 					</xsd:sequence>
-					<xsd:assert test="count(*[@id='signatureInformationEncoding']) = 1 and count(*[@id='signer']) = (0,1) and count(*[@id='signatureMethod']) = 1 and count(*[@id='signatureValue']) = 1 and count(*[@id='signatureValidationRules']) = 1 and count(*[@id='signatureValidationRules']) = 1 and count(*[@id='keyInformation']) = (0,1)"/>
+					<xsd:assert test="count(*[@id='signatureInformationEncoding']) = 1 and count(*[@id='signer']) = (0,1) and count(*[@id='signatureMethod']) = 1 and count(*[@id='signatureValue']) = 1 and count(*[@id='signatureValidationRules']) = 1 and count(*[@id='keyInformation']) = (0,1)"/>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
