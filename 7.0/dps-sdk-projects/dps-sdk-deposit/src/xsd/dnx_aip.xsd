@@ -1,0 +1,1073 @@
+<?xml version="1.0"?>
+<xsd:schema version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.exlibrisgroup.com/dps/dnx"
+	targetNamespace="http://www.exlibrisgroup.com/dps/dnx"
+	elementFormDefault="qualified">
+
+	<xsd:element name="dnx" type="dnxType"/>
+
+	<xsd:complexType name="dnxType">
+		<xsd:annotation>
+			<xsd:documentation source="http://linktodoc"/>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="section" minOccurs="0" maxOccurs="unbounded">
+				<xsd:alternative test="@id='generalIECharacteristics'" type="generalIECharacteristicsSection"/>
+				<xsd:alternative test="@id='generalRepCharacteristics'" type="generalRepCharacteristicsSection"/>
+				<xsd:alternative test="@id='generalFileCharacteristics'" type="generalFileCharacteristicsSection"/>
+				<xsd:alternative test="@id='objectCharacteristics'" type="objectCharacteristicsSection"/>
+				<xsd:alternative test="@id='CMS'" type="CMSSection"/>
+				<xsd:alternative test="@id='webHarvesting'" type="webHarvestingSection"/>
+				<xsd:alternative test="@id='internalIdentifier'" type="internalIdentifierSection"/>
+				<xsd:alternative test="@id='objectIdentifier'" type="objectIdentifierSection"/>
+				<xsd:alternative test="@id='preservationLevel'" type="preservationLevelSection"/>
+				<xsd:alternative test="@id='significantProperties'" type="significantPropertiesSection"/>
+				<xsd:alternative test="@id='fileFixity'" type="fileFixitySection"/>
+				<xsd:alternative test="@id='fileFormat'" type="fileFormatSection"/>
+				<xsd:alternative test="@id='fileVirusCheck'" type="fileVirusCheckSection"/>
+				<xsd:alternative test="@id='fileValidation'" type="fileValidationSection"/>
+				<xsd:alternative test="@id='vsOutcome'" type="vsOutcomeSection"/>
+				<xsd:alternative test="@id='creatingApplication'" type="creatingApplicationSection"/>
+				<xsd:alternative test="@id='inhibitors'" type="inhibitorsSection"/>
+				<xsd:alternative test="@id='objectCharacteristicsExtension'" type="objectCharacteristicsExtensionSection"/>
+				<xsd:alternative test="@id='environment'" type="environmentSection"/>
+				<xsd:alternative test="@id='environmentDependencies'" type="environmentDependenciesSection"/>
+				<xsd:alternative test="@id='environmentSoftware'" type="environmentSoftwareSection"/>
+				<xsd:alternative test="@id='envSoftwareRegistry'" type="envSoftwareRegistrySection"/>
+				<xsd:alternative test="@id='environmentHardware'" type="environmentHardwareSection"/>
+				<xsd:alternative test="@id='envHardwareRegistry'" type="envHardwareRegistrySection"/>
+				<xsd:alternative test="@id='environmentExtension'" type="environmentExtensionSection"/>
+				<xsd:alternative test="@id='signatureInformation'" type="signatureInformationSection"/>
+				<xsd:alternative test="@id='signatureInformationExtension'" type="signatureInformationExtensionSection"/>
+				<xsd:alternative test="@id='relationship'" type="relationshipSection"/>
+				<xsd:alternative test="@id='linkingIEIdentifier'" type="linkingIEIdentifierSection"/>
+				<xsd:alternative test="@id='producer'" type="producerSection"/>
+				<xsd:alternative test="@id='producerAgent'" type="producerAgentSection"/>
+				<xsd:alternative test="@id='event'" type="eventSection"/>
+				<xsd:alternative test="@id='linkingRightsStatementIdentifier'" type="linkingRightsStatementIdentifierSection"/>
+				<xsd:alternative test="@id='accessRightsPolicy'" type="accessRightsPolicySection"/>
+				<xsd:alternative test="@id='retentionPolicy'" type="retentionPolicySection"/>
+				<xsd:alternative test="@id='grantedRightsStatement'" type="grantedRightsStatementSection"/>
+				<xsd:alternative test="@id='metaData'" type="metaDataSection"/>
+				<xsd:alternative test="@id='workProduct'" type="workProductSection"/>
+				<xsd:alternative test="@id='Collection'" type="CollectionSection"/>
+				<xsd:alternative type="errorType"/>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="version" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>version: a required DNX version
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:assert test=" count(*[@id='generalIECharacteristics']) = (0,1) and  count(*[@id='generalRepCharacteristics']) = (0,1) and  count(*[@id='generalFileCharacteristics']) = (0,1) and  count(*[@id='objectCharacteristics']) = (0,1) and  count(*[@id='CMS']) = (0,1) and  count(*[@id='webHarvesting']) = (0,1) and  count(*[@id='internalIdentifier']) = (0,1) and  count(*[@id='objectIdentifier']) = (0,1) and  count(*[@id='preservationLevel']) = (0,1) and  count(*[@id='significantProperties']) = (0,1) and  count(*[@id='fileFixity']) = (0,1) and  count(*[@id='fileFormat']) = (0,1) and  count(*[@id='fileVirusCheck']) = (0,1) and  count(*[@id='fileValidation']) = (0,1) and  count(*[@id='vsOutcome']) = (0,1) and  count(*[@id='creatingApplication']) = (0,1) and  count(*[@id='inhibitors']) = (0,1) and  count(*[@id='objectCharacteristicsExtension']) = (0,1) and  count(*[@id='environment']) = (0,1) and  count(*[@id='environmentDependencies']) = (0,1) and  count(*[@id='environmentSoftware']) = (0,1) and  count(*[@id='envSoftwareRegistry']) = (0,1) and  count(*[@id='environmentHardware']) = (0,1) and  count(*[@id='envHardwareRegistry']) = (0,1) and  count(*[@id='environmentExtension']) = (0,1) and  count(*[@id='signatureInformation']) = (0,1) and  count(*[@id='signatureInformationExtension']) = (0,1) and  count(*[@id='relationship']) = (0,1) and  count(*[@id='linkingIEIdentifier']) = (0,1) and  count(*[@id='producer']) = (0,1) and  count(*[@id='producerAgent']) = (0,1) and  count(*[@id='event']) = (0,1) and  count(*[@id='linkingRightsStatementIdentifier']) = (0,1) and  count(*[@id='accessRightsPolicy']) = (0,1) and  count(*[@id='retentionPolicy']) = (0,1) and  count(*[@id='grantedRightsStatement']) = (0,1) and  count(*[@id='metaData']) = (0,1) and  count(*[@id='workProduct']) = (0,1) and  count(*[@id='Collection']) = (0,1)"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="generalIECharacteristicsSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='submissionReason'" type="nullableString"/>
+							<xsd:alternative test="@id='status'" type="nullableString"/>
+							<xsd:alternative test="@id='statusDate'" type="nullableString"/>
+							<xsd:alternative test="@id='IEEntityType'" type="nullableString"/>
+							<xsd:alternative test="@id='Version'" type="nullableInt"/>
+							<xsd:alternative test="@id='UserDefinedA'" type="nullableString"/>
+							<xsd:alternative test="@id='UserDefinedB'" type="nullableString"/>
+							<xsd:alternative test="@id='UserDefinedC'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='submissionReason']) = (0,1) and count(*[@id='status']) = (0,1) and count(*[@id='statusDate']) = (0,1) and count(*[@id='IEEntityType']) = (0,1) and count(*[@id='Version']) = (0,1) and count(*[@id='UserDefinedA']) = (0,1) and count(*[@id='UserDefinedB']) = (0,1) and count(*[@id='UserDefinedC']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="generalRepCharacteristicsSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='label'" type="nullableString"/>
+							<xsd:alternative test="@id='preservationType'" type="nullableString"/>
+							<xsd:alternative test="@id='usageType'" type="nullableString"/>
+							<xsd:alternative test="@id='representationEntityType'" type="nullableString"/>
+							<xsd:alternative test="@id='contentType'" type="nullableString"/>
+							<xsd:alternative test="@id='contextType'" type="nullableString"/>
+							<xsd:alternative test="@id='hardwareUsed'" type="nullableString"/>
+							<xsd:alternative test="@id='physicalCarrierMedia'" type="nullableString"/>
+							<xsd:alternative test="@id='derivedFromId'" type="nullableString"/>
+							<xsd:alternative test="@id='deliveryPriority'" type="nullableInt"/>
+							<xsd:alternative test="@id='orderingSequence'" type="nullableInt"/>
+							<xsd:alternative test="@id='DigitalOriginal'" type="nullableBoolean"/>
+							<xsd:alternative test="@id='RevisionNumber'" type="nullableInt"/>
+							<xsd:alternative test="@id='RepresentationCode'" type="nullableString"/>
+							<xsd:alternative test="@id='TaskID'" type="nullableString"/>
+							<xsd:alternative test="@id='RepresentationOriginalName'" type="nullableString"/>
+							<xsd:alternative test="@id='UserDefinedA'" type="nullableString"/>
+							<xsd:alternative test="@id='UserDefinedB'" type="nullableString"/>
+							<xsd:alternative test="@id='UserDefinedC'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='label']) = (0,1) and count(*[@id='preservationType']) = (0,1) and count(*[@id='usageType']) = (0,1) and count(*[@id='representationEntityType']) = (0,1) and count(*[@id='contentType']) = (0,1) and count(*[@id='contextType']) = (0,1) and count(*[@id='hardwareUsed']) = (0,1) and count(*[@id='physicalCarrierMedia']) = (0,1) and count(*[@id='derivedFromId']) = (0,1) and count(*[@id='deliveryPriority']) = (0,1) and count(*[@id='orderingSequence']) = (0,1) and count(*[@id='DigitalOriginal']) = (0,1) and count(*[@id='RevisionNumber']) = (0,1) and count(*[@id='RepresentationCode']) = (0,1) and count(*[@id='TaskID']) = (0,1) and count(*[@id='RepresentationOriginalName']) = (0,1) and count(*[@id='UserDefinedA']) = (0,1) and count(*[@id='UserDefinedB']) = (0,1) and count(*[@id='UserDefinedC']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="generalFileCharacteristicsSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='label'" type="nullableString"/>
+							<xsd:alternative test="@id='note'" type="nullableString"/>
+							<xsd:alternative test="@id='fileCreationDate'" type="nullableString"/>
+							<xsd:alternative test="@id='fileModificationDate'" type="nullableString"/>
+							<xsd:alternative test="@id='FileEntityType'" type="nullableString"/>
+							<xsd:alternative test="@id='compositionLevel'" type="nullableInt"/>
+							<xsd:alternative test="@id='fileLocationType'" type="nullableString"/>
+							<xsd:alternative test="@id='fileLocation'" type="nullableString"/>
+							<xsd:alternative test="@id='fileOriginalName'" type="nullableString"/>
+							<xsd:alternative test="@id='fileOriginalPath'" type="nullableString"/>
+							<xsd:alternative test="@id='fileOriginalID'" type="nullableString"/>
+							<xsd:alternative test="@id='fileExtension'" type="nullableString"/>
+							<xsd:alternative test="@id='fileMIMEType'" type="nullableString"/>
+							<xsd:alternative test="@id='fileSizeBytes'" type="nullableInt"/>
+							<xsd:alternative test="@id='formatLibraryId'" type="nullableString"/>
+							<xsd:alternative test="@id='riskLibraryIdentifiers'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='label']) = (0,1) and count(*[@id='note']) = (0,1) and count(*[@id='fileCreationDate']) = (0,1) and count(*[@id='fileModificationDate']) = (0,1) and count(*[@id='FileEntityType']) = (0,1) and count(*[@id='compositionLevel']) = (0,1) and count(*[@id='fileLocationType']) = (0,1) and count(*[@id='fileLocation']) = (0,1) and count(*[@id='fileOriginalName']) = (0,1) and count(*[@id='fileOriginalPath']) = (0,1) and count(*[@id='fileOriginalID']) = (0,1) and count(*[@id='fileExtension']) = (0,1) and count(*[@id='fileMIMEType']) = (0,1) and count(*[@id='fileSizeBytes']) = (0,1) and count(*[@id='formatLibraryId']) = (0,1) and count(*[@id='riskLibraryIdentifiers']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="objectCharacteristicsSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='objectType'" type="nullableString"/>
+							<xsd:alternative test="@id='parentID'" type="nullableString"/>
+							<xsd:alternative test="@id='groupID'" type="nullableString"/>
+							<xsd:alternative test="@id='creationDate'" type="nullableString"/>
+							<xsd:alternative test="@id='createdBy'" type="nullableString"/>
+							<xsd:alternative test="@id='modificationDate'" type="nullableString"/>
+							<xsd:alternative test="@id='modifiedBy'" type="nullableString"/>
+							<xsd:alternative test="@id='owner'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='objectType']) = (0,1) and count(*[@id='parentID']) = (0,1) and count(*[@id='groupID']) = (0,1) and count(*[@id='creationDate']) = (0,1) and count(*[@id='createdBy']) = (0,1) and count(*[@id='modificationDate']) = (0,1) and count(*[@id='modifiedBy']) = (0,1) and count(*[@id='owner']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="CMSSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='system'" type="nullableString"/>
+							<xsd:alternative test="@id='recordId'" type="nullableString"/>
+							<xsd:alternative test="@id='mId'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='system']) = (0,1) and count(*[@id='recordId']) = (0,1) and count(*[@id='mId']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="webHarvestingSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='primarySeedURL'" type="nullableString"/>
+							<xsd:alternative test="@id='WCTIdentifier'" type="nullableString"/>
+							<xsd:alternative test="@id='targetName'" type="nullableString"/>
+							<xsd:alternative test="@id='group'" type="nullableString"/>
+							<xsd:alternative test="@id='harvestDate'" type="nullableString"/>
+							<xsd:alternative test="@id='harvestTime'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='primarySeedURL']) = (0,1) and count(*[@id='WCTIdentifier']) = (0,1) and count(*[@id='targetName']) = (0,1) and count(*[@id='group']) = (0,1) and count(*[@id='harvestDate']) = (0,1) and count(*[@id='harvestTime']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="internalIdentifierSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='internalIdentifierType'" type="stringType"/>
+							<xsd:alternative test="@id='internalIdentifierValue'" type="stringType"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='internalIdentifierType']) = (0,1) and count(*[@id='internalIdentifierValue']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="objectIdentifierSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='objectIdentifierType'" type="stringType"/>
+							<xsd:alternative test="@id='objectIdentifierValue'" type="stringType"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='objectIdentifierType']) = 1 and count(*[@id='objectIdentifierValue']) = 1"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="preservationLevelSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='preservationLevelValue'" type="stringType"/>
+							<xsd:alternative test="@id='preservationLevelRole'" type="nullableString"/>
+							<xsd:alternative test="@id='preservationLevelRationale'" type="nullableString"/>
+							<xsd:alternative test="@id='preservationLevelDateAssigned'" type="nullableString"/>
+							<xsd:alternative test="@id='preservationLevelType'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='preservationLevelValue']) = 1 and count(*[@id='preservationLevelRole']) = (0,1) and count(*[@id='preservationLevelDateAssigned']) = (0,1) and count(*[@id='preservationLevelType']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="significantPropertiesSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='significantPropertiesType'" type="nullableString"/>
+							<xsd:alternative test="@id='significantPropertiesValue'" type="nullableString"/>
+							<xsd:alternative test="@id='significantPropertiesExtension'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='significantPropertiesType']) = (0,1) and count(*[@id='significantPropertiesValue']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="fileFixitySection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='agent'" type="nullableString"/>
+							<xsd:alternative test="@id='pluginName'" type="nullableString"/>
+							<xsd:alternative test="@id='fixityType'" type="stringType"/>
+							<xsd:alternative test="@id='fixityValue'" type="stringType"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='agent']) = (0,1) and count(*[@id='pluginName']) = (0,1) and count(*[@id='fixityType']) = 1 and count(*[@id='fixityValue']) = 1"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="fileFormatSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='agent'" type="nullableString"/>
+							<xsd:alternative test="@id='formatRegistry'" type="nullableString"/>
+							<xsd:alternative test="@id='formatRegistryId'" type="nullableString"/>
+							<xsd:alternative test="@id='formatRegistryRole'" type="nullableString"/>
+							<xsd:alternative test="@id='formatName'" type="stringType"/>
+							<xsd:alternative test="@id='formatVersion'" type="nullableString"/>
+							<xsd:alternative test="@id='formatDescription'" type="nullableString"/>
+							<xsd:alternative test="@id='formatNote'" type="nullableString"/>
+							<xsd:alternative test="@id='exactFormatIdentification'" type="nullableBoolean"/>
+							<xsd:alternative test="@id='mimeType'" type="nullableString"/>
+							<xsd:alternative test="@id='agentVersion'" type="nullableString"/>
+							<xsd:alternative test="@id='agentSignatureVersion'" type="nullableString"/>
+							<xsd:alternative test="@id='identificationMethod'" type="nullableString"/>
+							<xsd:alternative test="@id='formatLibraryVersion'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='agent']) = (0,1) and count(*[@id='formatRegistry']) = (0,1) and count(*[@id='formatRegistryId']) = (0,1) and count(*[@id='formatRegistryRole']) = (0,1) and count(*[@id='formatName']) = 1 and count(*[@id='formatVersion']) = (0,1) and count(*[@id='formatDescription']) = (0,1) and count(*[@id='exactFormatIdentification']) = (0,1) and count(*[@id='mimeType']) = (0,1) and count(*[@id='agentVersion']) = (0,1) and count(*[@id='agentSignatureVersion']) = (0,1) and count(*[@id='identificationMethod']) = (0,1) and count(*[@id='formatLibraryVersion']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="fileVirusCheckSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='agent'" type="nullableString"/>
+							<xsd:alternative test="@id='status'" type="nullableString"/>
+							<xsd:alternative test="@id='content'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='agent']) = (0,1) and count(*[@id='status']) = (0,1) and count(*[@id='content']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="fileValidationSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='agent'" type="nullableString"/>
+							<xsd:alternative test="@id='pluginName'" type="nullableString"/>
+							<xsd:alternative test="@id='status'" type="nullableString"/>
+							<xsd:alternative test="@id='format'" type="nullableString"/>
+							<xsd:alternative test="@id='version'" type="nullableString"/>
+							<xsd:alternative test="@id='mimeType'" type="nullableString"/>
+							<xsd:alternative test="@id='profile'" type="nullableString"/>
+							<xsd:alternative test="@id='isValid'" type="nullableBoolean"/>
+							<xsd:alternative test="@id='isWellFormed'" type="nullableBoolean"/>
+							<xsd:alternative test="@id='errorMessage'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='agent']) = (0,1) and count(*[@id='pluginName']) = (0,1) and count(*[@id='status']) = (0,1) and count(*[@id='format']) = (0,1) and count(*[@id='version']) = (0,1) and count(*[@id='mimeType']) = (0,1) and count(*[@id='profile']) = (0,1) and count(*[@id='isValid']) = (0,1) and count(*[@id='isWellFormed']) = (0,1) and count(*[@id='errorMessage']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="vsOutcomeSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='checkDate'" type="stringType"/>
+							<xsd:alternative test="@id='vsAgent'" type="stringType"/>
+							<xsd:alternative test="@id='type'" type="stringType"/>
+							<xsd:alternative test="@id='result'" type="stringType"/>
+							<xsd:alternative test="@id='resultDetails'" type="nullableString"/>
+							<xsd:alternative test="@id='vsEvaluation'" type="stringType"/>
+							<xsd:alternative test="@id='vsEvaluationDetails'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='checkDate']) = 1 and count(*[@id='vsAgent']) = 1 and count(*[@id='type']) = 1 and count(*[@id='result']) = 1 and count(*[@id='resultDetails']) = (0,1) and count(*[@id='vsEvaluation']) = 1 and count(*[@id='vsEvaluationDetails']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="creatingApplicationSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='creatingApplicationName'" type="nullableString"/>
+							<xsd:alternative test="@id='creatingApplicationVersion'" type="nullableString"/>
+							<xsd:alternative test="@id='dateCreatedByApplication'" type="nullableString"/>
+							<xsd:alternative test="@id='creatingApplicationExtension'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='creatingApplicationName']) = (0,1) and count(*[@id='creatingApplicationVersion']) = (0,1) and count(*[@id='dateCreatedByApplication']) = (0,1) and count(*[@id='creatingApplicationExtension']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="inhibitorsSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='inhibitorType'" type="stringType"/>
+							<xsd:alternative test="@id='inhibitorTarget'" type="nullableString"/>
+							<xsd:alternative test="@id='inhibitorKey'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='inhibitorType']) = (0,1) and count(*[@id='inhibitorTarget']) = (0,1) and count(*[@id='inhibitorKey']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="objectCharacteristicsExtensionSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='objectCharacteristicsExtension'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='objectCharacteristicsExtension']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="environmentSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='environmentCharacteristic'" type="nullableString"/>
+							<xsd:alternative test="@id='environmentPurpose'" type="nullableString"/>
+							<xsd:alternative test="@id='environmentNote'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='environmentCharacteristic']) = (0,1) and count(*[@id='environmentPurpose']) = (0,1) and count(*[@id='environmentNote']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="environmentDependenciesSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='dependencyName'" type="nullableString"/>
+							<xsd:alternative test="@id='dependencyIdentifierType1'" type="nullableString"/>
+							<xsd:alternative test="@id='dependencyIdentifierValue1'" type="nullableString"/>
+							<xsd:alternative test="@id='dependencyIdentifierType2'" type="nullableString"/>
+							<xsd:alternative test="@id='dependencyIdentifierValue2'" type="nullableString"/>
+							<xsd:alternative test="@id='dependencyIdentifierType3'" type="nullableString"/>
+							<xsd:alternative test="@id='dependencyIdentifierValue3'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='dependencyName']) = (0,1) and count(*[@id='dependencyIdentifierType1']) = (0,1) and count(*[@id='dependencyIdentifierValue1']) = (0,1) and count(*[@id='dependencyIdentifierType2']) = (0,1) and count(*[@id='dependencyIdentifierValue2']) = (0,1) and count(*[@id='dependencyIdentifierType3']) = (0,1) and count(*[@id='dependencyIdentifierValue3']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="environmentSoftwareSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='softwareName'" type="stringType"/>
+							<xsd:alternative test="@id='softwareVersion'" type="nullableString"/>
+							<xsd:alternative test="@id='softwareType'" type="stringType"/>
+							<xsd:alternative test="@id='softwareOtherInformation'" type="nullableString"/>
+							<xsd:alternative test="@id='softwareDependancy'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='softwareName']) = 1 and count(*[@id='softwareVersion']) = (0,1) and count(*[@id='softwareType']) = 1 and count(*[@id='softwareOtherInformation']) = (0,1) and count(*[@id='softwareDependancy']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="envSoftwareRegistrySection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='registryId'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='registryId']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="environmentHardwareSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='hardwareName'" type="nullableString"/>
+							<xsd:alternative test="@id='hardwareType'" type="nullableString"/>
+							<xsd:alternative test="@id='hardwareOtherInformation'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='hardwareName']) = (0,1) and count(*[@id='hardwareType']) = (0,1) and count(*[@id='hardwareOtherInformation']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="envHardwareRegistrySection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='registryId'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='registryId']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="environmentExtensionSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='environmentExtension'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='environmentExtension']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="signatureInformationSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='signatureInformationEncoding'" type="stringType"/>
+							<xsd:alternative test="@id='signer'" type="nullableString"/>
+							<xsd:alternative test="@id='signatureMethod'" type="stringType"/>
+							<xsd:alternative test="@id='signatureValue'" type="stringType"/>
+							<xsd:alternative test="@id='signatureValidationRules'" type="stringType"/>
+							<xsd:alternative test="@id='signatureProperties'" type="nullableString"/>
+							<xsd:alternative test="@id='keyInformation'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='signatureInformationEncoding']) = 1 and count(*[@id='signer']) = (0,1) and count(*[@id='signatureMethod']) = 1 and count(*[@id='signatureValue']) = 1 and count(*[@id='signatureValidationRules']) = 1 and count(*[@id='keyInformation']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="signatureInformationExtensionSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='signatureInformationExtension'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='signatureInformationExtension']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="relationshipSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='relationshipType'" type="stringType"/>
+							<xsd:alternative test="@id='relationshipSubType'" type="stringType"/>
+							<xsd:alternative test="@id='relatedObjectIdentifierType1'" type="stringType"/>
+							<xsd:alternative test="@id='relatedObjectIdentifierValue1'" type="stringType"/>
+							<xsd:alternative test="@id='relatedObjectSequence1'" type="nullableString"/>
+							<xsd:alternative test="@id='relatedObjectIdentifierType2'" type="nullableString"/>
+							<xsd:alternative test="@id='relatedObjectIdentifierValue2'" type="nullableString"/>
+							<xsd:alternative test="@id='relatedObjectSequence2'" type="nullableString"/>
+							<xsd:alternative test="@id='relatedObjectIdentifierType3'" type="nullableString"/>
+							<xsd:alternative test="@id='relatedObjectIdentifierValue3'" type="nullableString"/>
+							<xsd:alternative test="@id='relatedObjectSequence3'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='relationshipType']) = 1 and count(*[@id='relationshipSubType']) = 1 and count(*[@id='relatedObjectIdentifierType1']) = 1 and count(*[@id='relatedObjectIdentifierValue1']) = 1 and count(*[@id='relatedObjectSequence1']) = (0,1) and count(*[@id='relatedObjectIdentifierType2']) = (0,1) and count(*[@id='relatedObjectIdentifierValue2']) = (0,1) and count(*[@id='relatedObjectSequence2']) = (0,1) and count(*[@id='relatedObjectIdentifierType3']) = (0,1) and count(*[@id='relatedObjectIdentifierValue3']) = (0,1) and count(*[@id='relatedObjectSequence3']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="linkingIEIdentifierSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='linkingIEIdentifierType'" type="stringType"/>
+							<xsd:alternative test="@id='linkingIEIdentifierValue'" type="stringType"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='linkingIEIdentifierType']) = 1 and count(*[@id='linkingIEIdentifierValue']) = 1"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="producerSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='producerId'" type="nullableString"/>
+							<xsd:alternative test="@id='userIdAppId'" type="nullableString"/>
+							<xsd:alternative test="@id='defaultLanguage'" type="nullableString"/>
+							<xsd:alternative test="@id='authorativeName'" type="nullableString"/>
+							<xsd:alternative test="@id='userName'" type="nullableString"/>
+							<xsd:alternative test="@id='firstName'" type="nullableString"/>
+							<xsd:alternative test="@id='lastName'" type="nullableString"/>
+							<xsd:alternative test="@id='middleName'" type="nullableString"/>
+							<xsd:alternative test="@id='jobTitle'" type="nullableString"/>
+							<xsd:alternative test="@id='address1'" type="nullableString"/>
+							<xsd:alternative test="@id='address2'" type="nullableString"/>
+							<xsd:alternative test="@id='address3'" type="nullableString"/>
+							<xsd:alternative test="@id='address4'" type="nullableString"/>
+							<xsd:alternative test="@id='address5'" type="nullableString"/>
+							<xsd:alternative test="@id='zip'" type="nullableString"/>
+							<xsd:alternative test="@id='emailAddress'" type="nullableString"/>
+							<xsd:alternative test="@id='webSiteUrl'" type="nullableString"/>
+							<xsd:alternative test="@id='telephone1'" type="nullableString"/>
+							<xsd:alternative test="@id='telephone2'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='producerId']) = (0,1) and count(*[@id='userIdAppId']) = (0,1) and count(*[@id='defaultLanguage']) = (0,1) and count(*[@id='authorativeName']) = (0,1) and count(*[@id='userName']) = (0,1) and count(*[@id='firstName']) = (0,1) and count(*[@id='lastName']) = (0,1) and count(*[@id='middleName']) = (0,1) and count(*[@id='jobTitle']) = (0,1) and count(*[@id='address1']) = (0,1) and count(*[@id='address2']) = (0,1) and count(*[@id='address3']) = (0,1) and count(*[@id='address4']) = (0,1) and count(*[@id='address5']) = (0,1) and count(*[@id='zip']) = (0,1) and count(*[@id='emailAddress']) = (0,1) and count(*[@id='webSiteUrl']) = (0,1) and count(*[@id='telephone1']) = (0,1) and count(*[@id='telephone2']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="producerAgentSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='firstName'" type="nullableString"/>
+							<xsd:alternative test="@id='lastName'" type="nullableString"/>
+							<xsd:alternative test="@id='middleName'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='firstName']) = (0,1) and count(*[@id='lastName']) = (0,1) and count(*[@id='middleName']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="eventSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='eventIdentifierType'" type="stringType"/>
+							<xsd:alternative test="@id='eventIdentifierValue'" type="nullableString"/>
+							<xsd:alternative test="@id='eventType'" type="stringType"/>
+							<xsd:alternative test="@id='eventDescription'" type="nullableString"/>
+							<xsd:alternative test="@id='eventDateTime'" type="stringType"/>
+							<xsd:alternative test="@id='eventOutcome1'" type="nullableString"/>
+							<xsd:alternative test="@id='eventOutcomeDetail1'" type="nullableString"/>
+							<xsd:alternative test="@id='eventOutcomeDetailExtension1'" type="nullableString"/>
+							<xsd:alternative test="@id='eventOutcome2'" type="nullableString"/>
+							<xsd:alternative test="@id='eventOutcomeDetail2'" type="nullableString"/>
+							<xsd:alternative test="@id='eventOutcomeDetailExtension2'" type="nullableString"/>
+							<xsd:alternative test="@id='eventOutcome3'" type="nullableString"/>
+							<xsd:alternative test="@id='eventOutcomeDetail3'" type="nullableString"/>
+							<xsd:alternative test="@id='eventOutcomeDetailExtension3'" type="nullableString"/>
+							<xsd:alternative test="@id='linkingAgentIdentifierXMLID1'" type="nullableString"/>
+							<xsd:alternative test="@id='linkingAgentIdentifierType1'" type="nullableString"/>
+							<xsd:alternative test="@id='linkingAgentIdentifierValue1'" type="nullableString"/>
+							<xsd:alternative test="@id='linkingAgentRole1'" type="nullableString"/>
+							<xsd:alternative test="@id='linkingAgentIdentifierXMLID2'" type="nullableString"/>
+							<xsd:alternative test="@id='linkingAgentIdentifierType2'" type="nullableString"/>
+							<xsd:alternative test="@id='linkingAgentIdentifierValue2'" type="nullableString"/>
+							<xsd:alternative test="@id='linkingAgentRole2'" type="nullableString"/>
+							<xsd:alternative test="@id='linkingAgentIdentifierXMLID3'" type="nullableString"/>
+							<xsd:alternative test="@id='linkingAgentIdentifierType3'" type="nullableString"/>
+							<xsd:alternative test="@id='linkingAgentIdentifierValue3'" type="nullableString"/>
+							<xsd:alternative test="@id='linkingAgentRole3'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='eventIdentifierType']) = 1 and count(*[@id='eventIdentifierValue']) = (0,1) and count(*[@id='eventType']) = 1 and count(*[@id='eventDescription']) = (0,1) and count(*[@id='eventDateTime']) = 1 and count(*[@id='eventOutcome1']) = (0,1) and count(*[@id='eventOutcomeDetail1']) = (0,1) and count(*[@id='eventOutcomeDetailExtension1']) = (0,1) and count(*[@id='eventOutcome2']) = (0,1) and count(*[@id='eventOutcomeDetail2']) = (0,1) and count(*[@id='eventOutcomeDetailExtension2']) = (0,1) and count(*[@id='eventOutcome3']) = (0,1) and count(*[@id='eventOutcomeDetail3']) = (0,1) and count(*[@id='eventOutcomeDetailExtension3']) = (0,1) and count(*[@id='linkingAgentIdentifierXMLID1']) = (0,1) and count(*[@id='linkingAgentIdentifierType1']) = (0,1) and count(*[@id='linkingAgentIdentifierValue1']) = (0,1) and count(*[@id='linkingAgentRole1']) = (0,1) and count(*[@id='linkingAgentIdentifierXMLID2']) = (0,1) and count(*[@id='linkingAgentIdentifierType2']) = (0,1) and count(*[@id='linkingAgentIdentifierValue2']) = (0,1) and count(*[@id='linkingAgentRole2']) = (0,1) and count(*[@id='linkingAgentIdentifierXMLID3']) = (0,1) and count(*[@id='linkingAgentIdentifierType3']) = (0,1) and count(*[@id='linkingAgentIdentifierValue3']) = (0,1) and count(*[@id='linkingAgentRole3']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="linkingRightsStatementIdentifierSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='linkingRightsStatementIdentifierType'" type="stringType"/>
+							<xsd:alternative test="@id='linkingRightsStatementIdentifierValue'" type="stringType"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='linkingRightsStatementIdentifierType']) = 1 and count(*[@id='linkingRightsStatementIdentifierValue']) = 1"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="accessRightsPolicySection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='policyId'" type="nullableString"/>
+							<xsd:alternative test="@id='policyParameters'" type="nullableString"/>
+							<xsd:alternative test="@id='policyDescription'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='policyId']) = (0,1) and count(*[@id='policyParameters']) = (0,1) and count(*[@id='policyDescription']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="retentionPolicySection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='policyId'" type="nullableString"/>
+							<xsd:alternative test="@id='policyDescription'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='policyId']) = (0,1) and count(*[@id='policyDescription']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="grantedRightsStatementSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='grantedRightsStatementIdentifier'" type="nullableString"/>
+							<xsd:alternative test="@id='grantedRightsStatementValue'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='grantedRightsStatementIdentifier']) = (0,1) and count(*[@id='grantedRightsStatementValue']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="metaDataSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='MID'" type="nullableString"/>
+							<xsd:alternative test="@id='UUID'" type="nullableString"/>
+							<xsd:alternative test="@id='creationDate'" type="nullableString"/>
+							<xsd:alternative test="@id='createdBy'" type="nullableString"/>
+							<xsd:alternative test="@id='modificationDate'" type="nullableString"/>
+							<xsd:alternative test="@id='modifiedBy'" type="nullableString"/>
+							<xsd:alternative test="@id='metadataType'" type="nullableString"/>
+							<xsd:alternative test="@id='description'" type="nullableString"/>
+							<xsd:alternative test="@id='application'" type="nullableString"/>
+							<xsd:alternative test="@id='externalSystem'" type="nullableString"/>
+							<xsd:alternative test="@id='externalRecordId'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='MID']) = (0,1) and count(*[@id='UUID']) = (0,1) and count(*[@id='creationDate']) = (0,1) and count(*[@id='createdBy']) = (0,1) and count(*[@id='modificationDate']) = (0,1) and count(*[@id='modifiedBy']) = (0,1) and count(*[@id='metadataType']) = (0,1) and count(*[@id='description']) = (0,1) and count(*[@id='application']) = (0,1) and count(*[@id='externalSystem']) = (0,1) and count(*[@id='externalRecordId']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="workProductSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='publishingHistory'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='publishingHistory']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="CollectionSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='collectionId'" type="nullableString"/>
+							<xsd:alternative test="@id='collectionParentId'" type="nullableString"/>
+							<xsd:alternative test="@id='name'" type="nullableString"/>
+							<xsd:alternative test="@id='externalId'" type="nullableString"/>
+							<xsd:alternative test="@id='externalSystem'" type="nullableString"/>
+							<xsd:alternative test="@id='publish'" type="nullableBoolean"/>
+							<xsd:alternative test="@id='navigate'" type="nullableBoolean"/>
+							<xsd:alternative test="@id='collectionOrder'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='collectionId']) = (0,1) and count(*[@id='collectionParentId']) = (0,1) and count(*[@id='name']) = (0,1) and count(*[@id='externalId']) = (0,1) and count(*[@id='externalSystem']) = (0,1) and count(*[@id='publish']) = (0,1) and count(*[@id='navigate']) = (0,1) and count(*[@id='collectionOrder']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="intType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:integer">
+				<xsd:attribute name="id" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="booleanType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:boolean">
+				<xsd:attribute name="id" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="doubleType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:double">
+				<xsd:attribute name="id" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="restrictedString">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="stringType">
+		<xsd:simpleContent>
+			<xsd:extension base="restrictedString">
+				<xsd:attribute name="id" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="nullableString">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="id" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="nullOrInteger">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d*|\s{0}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="nullableInt">
+		<xsd:simpleContent>
+			<xsd:extension base="nullOrInteger">
+				<xsd:attribute name="id" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="nullOrBoolean">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="true"/>
+			<xsd:enumeration value="false"/>
+			<xsd:enumeration value=""/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="nullableBoolean">
+		<xsd:simpleContent>
+			<xsd:extension base="nullOrBoolean">
+				<xsd:attribute name="id" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="errorType">
+	</xsd:complexType>
+</xsd:schema>
