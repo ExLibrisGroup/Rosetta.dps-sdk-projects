@@ -1,0 +1,234 @@
+<mets:mets xmlns:mets="http://www.loc.gov/METS/">
+  <mets:amdSec ID="rep1-amd">
+    <mets:techMD ID="rep1-amd-tech">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx">
+            <section id="generalRepCharacteristics">
+              <record>
+                <key id="preservationType">PRESERVATION_MASTER</key>
+                <key id="usageType">VIEW</key>
+                <key id="RevisionNumber">1</key>
+                <key id="DigitalOriginal">false</key>
+              </record>
+            </section>
+          </dnx>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:techMD>
+    <mets:rightsMD ID="rep1-amd-rights">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:rightsMD>
+    <mets:sourceMD ID="rep1-amd-source">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:sourceMD>
+    <mets:digiprovMD ID="rep1-amd-digiprov">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:digiprovMD>
+  </mets:amdSec>
+  <mets:amdSec ID="fid1-1-amd">
+    <mets:techMD ID="fid1-1-amd-tech">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx">
+            <section id="generalFileCharacteristics">
+              <record>
+                <key id="label">funding_form</key>
+                <key id="fileMIMEType">application/pdf</key>
+                <key id="fileOriginalPath">C:\Documents and Settings\zvif\Desktop\Example files\funding_form.pdf</key>
+                <key id="fileSizeBytes">452651</key>
+              </record>
+            </section>
+            <section id="fileFixity">
+              <record>
+                <key id="fixityType">MD5</key>
+                <key id="fixityValue">d68f001c63d4f6c93016599ad190e2fb</key>
+              </record>
+            </section>
+          </dnx>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:techMD>
+    <mets:rightsMD ID="fid1-1-amd-rights">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:rightsMD>
+    <mets:sourceMD ID="fid1-1-amd-source">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:sourceMD>
+    <mets:digiprovMD ID="fid1-1-amd-digiprov">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:digiprovMD>
+  </mets:amdSec>
+  <mets:amdSec ID="fid2-1-amd">
+    <mets:techMD ID="fid2-1-amd-tech">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx">
+            <section id="generalFileCharacteristics">
+              <record>
+                <key id="label">Blue hills</key>
+                <key id="fileMIMEType">image/jpeg</key>
+                <key id="fileOriginalPath">C:\Documents and Settings\zvif\Desktop\Example files\Blue hills.jpeg</key>
+                <key id="fileSizeBytes">28521</key>
+              </record>
+            </section>
+            <section id="fileFixity">
+              <record>
+                <key id="fixityType">MD5</key>
+                <key id="fixityValue">6fb2a38dc107eacb41cf1656e899cf70</key>
+              </record>
+            </section>
+          </dnx>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:techMD>
+    <mets:rightsMD ID="fid2-1-amd-rights">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:rightsMD>
+    <mets:sourceMD ID="fid2-1-amd-source">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:sourceMD>
+    <mets:digiprovMD ID="fid2-1-amd-digiprov">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:digiprovMD>
+  </mets:amdSec>
+  <mets:amdSec ID="fid3-1-amd">
+    <mets:techMD ID="fid3-1-amd-tech">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx">
+            <section id="generalFileCharacteristics">
+              <record>
+                <key id="label">Sunset</key>
+                <key id="fileMIMEType">image/jpeg</key>
+                <key id="fileOriginalPath">C:\Documents and Settings\zvif\Desktop\Example files\Sunset.jpg</key>
+                <key id="fileSizeBytes">122631</key>
+              </record>
+            </section>
+            <section id="fileFixity">
+              <record>
+                <key id="fixityType">MD5</key>
+                <key id="fixityValue">69c8102dd64aef7f66a722ef65648b59</key>
+              </record>
+            </section>
+          </dnx>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:techMD>
+    <mets:rightsMD ID="fid3-1-amd-rights">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:rightsMD>
+    <mets:sourceMD ID="fid3-1-amd-source">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:sourceMD>
+    <mets:digiprovMD ID="fid3-1-amd-digiprov">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:digiprovMD>
+  </mets:amdSec>
+  <mets:amdSec ID="ie-amd">
+    <mets:techMD ID="ie-amd-tech">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:techMD>
+    <mets:rightsMD ID="ie-amd-rights">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:rightsMD>
+    <mets:sourceMD ID="ie-amd-source">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:sourceMD>
+    <mets:digiprovMD ID="ie-amd-digiprov">
+      <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="dnx">
+        <mets:xmlData>
+          <dnx xmlns="http://www.exlibrisgroup.com/dps/dnx"/>
+        </mets:xmlData>
+      </mets:mdWrap>
+    </mets:digiprovMD>
+  </mets:amdSec>
+  <mets:fileSec>
+    <mets:fileGrp USE="VIEW" ID="rep1" ADMID="rep1-amd">
+      <mets:file ID="fid1-1" MIMETYPE="application/pdf" ADMID="fid1-1-amd">
+        <mets:FLocat LOCTYPE="URL" xlin:href="file://funding_form.pdf" xmlns:xlin="http://www.w3.org/1999/xlink"/>
+      </mets:file>
+      <mets:file ID="fid2-1" MIMETYPE="image/jpeg" ADMID="fid2-1-amd">
+        <mets:FLocat LOCTYPE="URL" xlin:href="file://Blue hills.jpeg" xmlns:xlin="http://www.w3.org/1999/xlink"/>
+      </mets:file>
+      <mets:file ID="fid3-1" MIMETYPE="image/jpeg" ADMID="fid3-1-amd">
+        <mets:FLocat LOCTYPE="URL" xlin:href="file://Sunset.jpg" xmlns:xlin="http://www.w3.org/1999/xlink"/>
+      </mets:file>
+    </mets:fileGrp>
+  </mets:fileSec>
+  <mets:structMap ID="rep1-1" TYPE="PHYSICAL">
+    <mets:div LABEL="PRESERVATION_MASTER;VIEW">
+      <mets:div LABEL="Table of Contents">
+      		<mets:div LABEL="funding_form" TYPE="FILE">
+        		<mets:fptr FILEID="fid1-1"/>
+        	</mets:div>
+        	<mets:div LABEL="Blue hills" TYPE="FILE">
+        		<mets:fptr FILEID="fid2-1"/>
+        	</mets:div>
+        	<mets:div LABEL="Sunset" TYPE="FILE">
+        		<mets:fptr FILEID="fid3-1"/>
+        	</mets:div>
+      </mets:div>
+    </mets:div>
+  </mets:structMap>
+</mets:mets>
