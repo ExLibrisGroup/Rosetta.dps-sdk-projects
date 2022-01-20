@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- February 2014 -->
+<!-- Rosetta Version 3.2.2 -->
+<!-- Change History -->
+<!-- Version 3.2.2 Changes:
+	1. mets_rosetta.xsd now conforms to xsd 1.1 only. Please use tools that support this version.
+	2. Add support for custom structMap types:
+	   PHYSICAL and LOGICAL will remain Rosetta-reserved. They will continue
+	   to be validated as before, only now as type "structMapType-Ros", and their divs as "divType-Ros" - see below.
+	   Rosetta will validate and store, but the IE Viewer will not deliver custom structMap types.
+	   These will be treated as custom, which will be validated according to the LOC validation schema (version 1.6).
+-->
+
+<!-- December 2018 -->
+<!-- Rosetta Version 6.0.0 -->
+<!-- Change History -->
+<!-- Version 6.0.0 Changes:
+	1. Added validation of DNX.
+-->
+
+<!-- February 2019 -->
+<!-- Rosetta Version 6.0.0.1 -->
+<!-- Change History -->
+<!-- Version 6.0.0.1 Changes:
+	1. Multiple techMD elements are allowed in amdSec
+-->
+
+<xsd:schema version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:dnx="http://www.exlibrisgroup.com/dps/dnx"
+	xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1"
+	xmlns="http://www.exlibrisgroup.com/xsd/dps/rosettaMets"
+	targetNamespace="http://www.exlibrisgroup.com/xsd/dps/rosettaMets"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
+
+	<xsd:import namespace="http://www.exlibrisgroup.com/dps/dnx" schemaLocation="dnx_sip.xsd"/>
+	<xsd:element name="mets">
+		<xsd:annotation>
+			<xsd:documentation>METS: Metadata Encoding and Transmission Standard.
+				METS is intended to provide a standardized XML format for
+				transmission of complex digital library objects between systems. As
+				such, it can be seen as filling a role similar to that defined for
+				the Submission Information Package (SIP), Archival Information
+				Package (AIP) and Dissemination Information Package (DIP) in the
+				Reference Model for an Open Archival Information System.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="metsType" />
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="metsType">
+		<xsd:annotation>
+			<xsd:documentation>metsType: Complex Type for METS Sections.
+				A Rosetta METS document consists of four possible subsidiary
+				sections: dmdSec (descriptive metadata section), amdSec
+				(administrative metadata section), fileGrp (file inventory group)
+				and structMap (structural map).
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="dmdSec" type="mdSecTypeDC" minOccurs="0"
+				maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>dmdSec: Description Metadata Section.
+						In Rosetta this section records all of the Descriptive Metadata on
+						the IE and File levels (Type DC).
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="amdSec" type="amdSecType" minOccurs="0"
+				maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>amdSec: Administrative Metadata Section.
+						This section records all of the administrative metadata for all items
+						in the METS object, and is divided into four subsections: techMD
+						(technical metadata), rightsMD (intellectual property rights
+						metadata), sourceMD (analog/digital source metadata), and
+						digiprovMD (digital provenance metadata). Each of these
+						subsections follows the mdSecType model, they include metadata
+						within the METS hub document (mdWrap). Single rightsMD and digiprovMD
+						elements are allowed per amdSec. Multiple techMD and sourceMD elements
+						are allowed per amdSec.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="fileSec">
+				<xsd:annotation>
+					<xsd:documentation>fileSec: Content File Section.
+						The content file section records information regarding all of the
+						data files which comprise the digital library object.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="fileGrp" minOccurs="1" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>fileGrp: File Group In Rosetta the File Group
+									element is used to define A Representation. This element list
+									the files included in each of the Representations. Rosetta
+									requires every IE to include by minimum one Representation.
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:complexContent>
+									<xsd:extension base="fileGrpType" />
+								</xsd:complexContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="structMap"
+				minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>structMap: Structural Map.
+						The structural map is the heart of a METS document, defining the
+						hierarchical arrangement of a primary source document which has
+						been digitized. This hierarchy is encoded as a tree of 'div'
+						elements.
+						The naming convention of the IDs is the following: The ID of the REP
+						has to be the prefix of the ID of the Structural Map, the suffix has to be
+						'-X' where X is a running number of the Structural Map list. For
+						example: For fileGrp ID 'rep1', the Structural Map ID should be
+						'rep1-1', 'rep1-2' etc.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:alternative test="upper-case(@TYPE)='LOGICAL'" type="structMapType-Ros"/>
+				<xsd:alternative test="upper-case(@TYPE)='PHYSICAL'" type="structMapType-Ros"/>
+				<xsd:alternative type="structMapType"/>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="amdSecType">
+		<xsd:annotation>
+			<xsd:documentation>amdSecType: Complex Type for Administrative
+				Metadata.
+				The administrative metadata section consists of four possible
+				subsidiary sections: techMD (technical metadata for
+				text/image/audio/video files), rightsMD (intellectual property
+				rights metadata), sourceMD (analog/digital source metadata), and
+				digiprovMD (digital provenance metadata, that is, the history of
+				migrations/translations performed on a digital library object from
+				it's original digital capture/encoding).
+				Rosetta includes all Metadata in the DNX format which is embedded in the
+				METADATA section.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="techMD" type="mdSecType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>techMD: technical metadata.
+						The techMD element provides a wrapper around a generic metadata
+						section, which should contain technical metadata regarding an
+						object.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="rightsMD" type="mdSecType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>rightsMD: intellectual property rights metadata.
+						The rightsMD element provides a wrapper around a generic metadata
+						section, which should contain access rights metadata.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="sourceMD" type="mdSecTypeSourceMD" minOccurs="0"
+				maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>sourceMD: source metadata.
+						The sourceMD element provides a wrapper around a generic metadata
+						section which should contain descriptive or administrative
+						metadata regarding the original source materials used to create
+						the METS object.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="digiprovMD" type="mdSecType"
+				minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>digiprovMD: digital provenance metadata.
+						The digiprovMD element is used to record information to allow both
+						archival/library staff and scholars to understand what
+						modifications have been performed to a digital object during its
+						life cycle in order to judge how those processes might have
+						altered or corrupted the object's ability to accurately represent
+						the original item.(The Rosetta term for such information is
+						'Provenance Event')
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="required">
+			<xsd:annotation>
+				<xsd:documentation>ID: an required XML ID value
+					In Rosetta amdSec on the IE level has a naming convention and has to
+					be named 'ie-amd'
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="fileGrpType">
+		<xsd:annotation>
+			<xsd:documentation>fileGrp: File Group.
+				The file group is used to cluster all of the digital files composing a
+				digital library object in a hierarchical arrangement. Any file group
+				must contain one or more file elements. File elements can contain
+				only one FLocat element (a pointer to a file containing content for
+				this object) .
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="file" type="fileType" minOccurs="1"
+				maxOccurs="unbounded" />
+			<!-- file element originally here -->
+		</xsd:choice>
+		<xsd:attribute name="ID" type="xsd:ID" use="required">
+			<xsd:annotation>
+				<xsd:documentation>ID: an required XML ID value.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="ADMID" type="xsd:IDREFS" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>ADMID: a required attribute specifying the XML ID
+				Values for administrative metadata sections in the METS document that provide information applicable to all of the files in this particular representation.
+				Each representation in a METS documents must link to a amdSec which includes Metadata (in a dnx form) of the Preservation Type.
+				One - and only one  - representation's Preservation Type must be PRESERVATION _MASTER.
+				METS documents that include a single representation do not require this section it will be auto-generated by Rosetta.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="USE" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>USE: an optional string attribute indicating the
+					intended use of all the files within this file group (e.g., master,
+					reference, thumbnails for image files). In Rosetta this information
+					is taken from the DNX.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="structMapType">
+		<xsd:annotation>
+			<xsd:documentation>structMap Complex Type
+				The structural map (structMap) outlines a hierarchical structure for
+				the original object being encoded, using a series of nested div
+				elements.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="div" type="divType">
+				<xsd:annotation>
+					<xsd:documentation>
+					div: Division.
+					The METS standard represents a document structurally as a series of nested
+					div elements, that is, as a hierarchy (e.g., a book, which is composed
+					of chapters, which are composed of subchapters, which are composed of
+					text). Every div node in the structural map hierarchy may be connected
+					(via subsidiary mptr or fptr elements) to content files which represent
+					that div's portion of the whole document.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>ID: an optional XML ID value.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="TYPE" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					TYPE: an optional string attribute specifying the type of structural
+					map provided.
+					PHYSICAL and LOGICAL are reserved types that will require the div structure to
+					comply with Rosetta IE Viewer requirements, as stated in the
+					divType-Ros section.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="LABEL" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					LABEL: an optional string attribute which may be used to describe the
+					structMap to users. This is primarily useful where more than one
+					structMap is provided for a single object (e.g., both logical and
+					physical structMap).
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="structMapType-Ros">
+		<xsd:annotation>
+			<xsd:documentation>
+				Rosetta structMap Complex Type
+				A Rosetta structural map is a structural map (see structMapType) that
+				allows for proper rendering in the Rosetta IE Viewer and Web Editor.
+				A Rosetta structMap must include two wrapping divs (in addition to the
+				file wrapping divs - see below divType-Ros):
+				The first div contains the LABEL of the structMap and second contains the
+				LABEL of the root node (as appears in the Rosetta UI).
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="div" type="divType-Ros">
+				<xsd:annotation>
+					<xsd:documentation>div: Division.
+						The METS standard represents a document structurally as a series of
+						nested div elements, that is, as a hierarchy (e.g., a book, which
+						is composed of chapters, which are composed of subchapters, which
+						are composed of text). Every div node in the structural map
+						hierarchy may be connected (via fptr elements) to content files
+						which represent that div's portion of the whole document.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="required">
+			<xsd:annotation>
+				<xsd:documentation>ID: an required XML ID value.
+					Rosetta enforces a naming convention as follows: The ID of the grp has to
+					be the prefix of the ID of the structMap ,the suffix has to be '-X' where
+					X is a running number of the structMap list.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="TYPE" type="xsd:string" use="required">
+			<xsd:annotation>
+				<xsd:documentation>TYPE: an required attribute specifying the type of structural map provided.
+					Values can be &quot;PHYSICAL&quot; for a map which describes the physical composition of the original work
+					(a series with individual monographs with pages), and &quot;LOGICAL&quot; for one which describes the intellectual
+					structure of the work (a monograph with TOC, forward, chapters, index., etc.).
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="divType">
+		<xsd:annotation>
+			<xsd:documentation>Div
+				Complex Type
+				The structural divisions of the hierarchical organization provided by a
+				&lt;structMap&gt; are represented by division &lt;div&gt; elements,
+				which can be nested to any depth.
+				Each &lt;div&gt; element can represent either an intellectual (logical)
+				division or a physical division.
+				Every &lt;div&gt; node in the structural map hierarchy may be connected (via
+				subsidiary &lt;mptr&gt; or &lt;fptr&gt; elements) to content files
+				which represent that div's portion of the whole document.
+
+
+				The METS standard represents a document structurally as a series of nested
+				div elements, that is, as a hierarchy (e.g., a book, which is composed
+				of chapters, which are composed of subchapters, which are composed of
+				text).
+				Every div node in the structural map hierarchy may be connected (via
+				subsidiary mptr or fptr elements) to content files which represent that
+				div's portion of the whole document.
+
+				SPECIAL NOTE REGARDING DIV ATTRIBUTE VALUES:
+				to clarify the differences between the ORDER, ORDERLABEL, and LABEL
+				attributes for the &lt;div&gt; element, imagine a text with 10 roman
+				numbered pages followed by 10 arabic numbered pages. Page iii would
+				have an ORDER of &quot;3&quot;, an ORDERLABEL of &quot;iii&quot; and a
+				LABEL of &quot;Page iii&quot;, while page 3 would have an ORDER of
+				&quot;13&quot;, an ORDERLABEL of &quot;3&quot; and a LABEL of
+				&quot;Page 3&quot;.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="mptr" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>
+						mptr: METS Pointer.
+						The mptr element allows a div to be associated with a separate METS
+						document containing the content corresponding with that div, rather
+						than pointing to an internal file or file group. A typical instance of
+						this would be the case of a METS document for a journal run, with a div
+						elements for each individual journal issue. The div elements for the
+						issues might point to separate METS documents for each issue, rather
+						than having files and file groups for every issue encoded in one
+						document.
+						NOTE: mptr is an empty element. The location of the resource pointed to MUST
+						be stored in the xlink:href attribute.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="ID" type="xsd:ID" use="optional">
+						<xsd:annotation>
+							<xsd:documentation>ID: an optional XML ID value.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+					<xsd:attributeGroup ref="LOCATION"/>
+					<xsd:attributeGroup ref="xlink:simpleLink"/>
+					<xsd:attribute name="CONTENTIDS" type="URIs" use="optional">
+						<xsd:annotation>
+							<xsd:documentation>CONTENTIDS: Content IDs for this division (equivalent to DIDL DII)
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="fptr" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>
+						fptr: File Pointer.
+						The fptr element associates a div element with content files that
+						represent that div. It can either point to a file directly itself, via
+						the FILEID attribute, or it can do more complex links to content via
+						the subsidiary area, par and seq elements.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="par" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>par: Parallel files.
+									The par element should used to link a div to a set of content files when
+									those files should be played/displayed in unison to deliver the content
+									to the user (e.g., displaying a text transcript simultaneously with
+									playing an audio file). A par element has two possible subsidiary
+									elements, which should be used in different cases. In cases where each
+									bytestream to be played in parallel can fit in a single file, you
+									should use subsidiary &lt;area&gt; elements within the par element to
+									point to those files. However, in some cases, bytestreams which should
+									be played in parallel are too large to fit in a single file (high
+									quality multi-track audio, or video). In those cases, you should use
+									subsidiary &lt;seq&gt; elements, where each &lt;seq&gt; contains the
+									files comprising a particular bytestream in the order they should be
+									played back. So, for example, in the case where you had an audio
+									recording which had to be split into three different, sequential files,
+									and a text transcription of the recording in a single file, you would
+									use a par element containing two seq elements. The first seq element
+									would contain three area elements, one for each audio file; the second
+									seq element would contain a single area element, for the text
+									transcription file.
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:choice>
+									<xsd:element name="area" type="areaType" maxOccurs="unbounded"/>
+									<xsd:element name="seq" type="seqType" maxOccurs="unbounded"/>
+								</xsd:choice>
+								<xsd:attribute name="ID" type="xsd:ID" use="optional">
+									<xsd:annotation>
+										<xsd:documentation>ID: an optional XML ID value.
+										</xsd:documentation>
+									</xsd:annotation>
+								</xsd:attribute>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="seq" type="seqType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>
+									seq: Sequence of files.
+									The seq element should be used to link a div to a set of content files
+									when those files should be played/displayed sequentially to deliver
+									content to a user. See the seqType documentation for more details.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="area" type="areaType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>
+									area: file area
+									The area element provides for more sophisticated linking between a div
+									element and content files representing that div, be they text, image,
+									audio, or video files. An area element can link a div to a point within
+									a file, to a one-dimension segment of a file (e.g., text screen, image
+									line, audio/video clip), or a two-dimensional section of a file (e.g,
+									subsection of an image, or a subsection of the video display of a video
+									file. See the areaType documentation for more details.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:choice>
+					<xsd:attribute name="ID" type="xsd:ID" use="optional">
+						<xsd:annotation>
+							<xsd:documentation>ID: an optional XML ID value.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+					<xsd:attribute name="FILEID" type="xsd:IDREF" use="optional">
+						<xsd:annotation>
+							<xsd:documentation>
+									FILEID: an IDREF to the file element which corresponds with the div
+									containing this ftpr.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+					<xsd:attribute name="CONTENTIDS" type="URIs" use="optional">
+						<xsd:annotation>
+							<xsd:documentation>
+									CONTENTIDS: Content IDs for this division (equivalent to DIDL DII)
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="div" type="divType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+						ID: an optional XML ID value.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="ORDER" type="xsd:integer" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+						ORDER: an optional integer representation of this div's order among its
+						siblings (e.g., its sequence).
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="ORDERLABEL" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+						ORDERLABEL:
+						an optional string representation of this div's order among its
+						siblings (e.g., &quot;xii&quot;), or a non-integer native numbering
+						system. It is presumed that this value will still be machine-actionable
+						(e.g., supports a page 'go to' function), and is not a
+						replacement/substitute for the LABEL attribute.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="LABEL" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+						LABEL: an optional string label to describe this div to an end user
+						viewing the document, as per a table of contents entry (NB: a div LABEL
+						should be specific to its level in the structural map. In the case of a
+						book with chapters, the book div LABEL should have the book title, and
+						the chapter div LABELS should have the individual chapter titles,
+						rather than having the chapter div LABELs combine both book title and
+						chapter title).
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="DMDID" type="xsd:IDREFS" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+						DMDID: an optional attribute providing the XML ID values for the
+						descriptive metadata sections within this METS document applicable to
+						this div.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="ADMID" type="xsd:IDREFS" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+						ADMID: an optional attribute providing the XML ID values for the
+						administrative metadata sections within this METS document applicable
+						to this div.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="TYPE" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+						TYPE: an optional string attribute for specifying a type of division
+						(e.g., chapter, article, page, etc.).
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="CONTENTIDS" type="URIs" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+						CONTENTIDS: Content IDs for this division (equivalent to DIDL DII)
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute ref="xlink:label">
+			<xsd:annotation>
+				<xsd:documentation>
+						xlink:label - an xlink label to be referred to by an smLink element
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="divType-Ros">
+		<xsd:annotation>
+			<xsd:documentation>
+					Div Complex Type
+					The METS standard represents a document structurally as a series of nested
+					div elements, that is,
+					as a hierarchy (e.g., a book, which is composed of chapters, which are
+					composed of subchapters, which are composed of text).
+					Every div node in the structural map hierarchy may be connected (via
+					subsidiary fptr elements)
+					to content files which represent that div's portion of the whole
+					document.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="fptr" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>fptr: File Pointer.
+						The fptr element associates a div element with content files that
+						represent that div. It points to a file directly itself, via the
+						FILEID attribute.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="FILEID" type="xsd:IDREF" use="required">
+						<xsd:annotation>
+							<xsd:documentation>FILEID: an IDREF to the file element which
+								corresponds with the div containing this ftpr.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="div" type="divType-Ros" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>ID: an optional XML ID value. Rosetta
+					native viewers do not use this attribute.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="ORDER" type="xsd:integer" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>ORDER: an optional integer representation of this
+					div's order among its siblings (e.g., its sequence). Rosetta
+					native viewers do not use this attribute.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="ORDERLABEL" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>ORDERLABEL: an optional string representation of
+					this div's order among its siblings (e.g., &quot;xii&quot;), or a
+					non-integer native numbering system. It is presumed that this value
+					will still be machine-actionable (e.g., supports a page 'go to'
+					function), and is not a replacement/substitute for the LABEL
+					attribute. Rosetta native viewers do not use this attribute.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="LABEL" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>LABEL: an optional string label to describe this
+					div to an end user viewing the document, as per a table of contents
+					entry (NB: a div LABEL should be specific to its level in the
+					structural map. In the case of a book with chapters, the book div
+					LABEL should have the book title, and the chapter div LABELS should
+					have the individual chapter titles, rather than having the chapter
+					div LABELs combine both book title and chapter title).
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="TYPE" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>TYPE: an optional string attribute for specifying
+					a type of division. If Type is FILE Rosetta will create a link to
+					the file in tree presented in the viewer.
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="FILE" />
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:simpleType name="URIs">
+		<xsd:list itemType="xsd:anyURI"/>
+	</xsd:simpleType>
+	<xsd:complexType name="areaType">
+		<xsd:annotation>
+			<xsd:documentation>
+					areaType: Complex Type for Area linking.
+					The area element provides for more sophisticated linking between a div
+					element and content files representing that div, be they text, image,
+					audio, or video files. An area element can link a div to a point within
+					a file, to a one-dimension segment of a file (e.g., text segment, image
+					line, audio/video clip), or a two-dimensional section of a file (e.g,
+					subsection of an image, or a subsection of the video display of a video
+					file. The area element has no content; all information is recorded
+					within its various attributes.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="ID" type="xsd:ID" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					ID: an optional XML ID value.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="FILEID" type="xsd:IDREF" use="required">
+			<xsd:annotation>
+				<xsd:documentation>
+					FILEID: a mandatory IDREF to the file element being pointed to by the
+					div.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="SHAPE" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					SHAPE: an optional string attribute defining the shape of a
+					two-dimensional area being referenced within a linked content file. It
+					must have one of the following values:
+					RECT: rectangular area
+					CIRCLE: a circular area
+					POLY: an irregular polygon.
+					The SHAPE attribute should be used as in HTML 4.
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="RECT"/>
+					<xsd:enumeration value="CIRCLE"/>
+					<xsd:enumeration value="POLY"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="COORDS" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					COORDS: an optional string attribute listing a set of visual
+					coordinates within an image (still image or video frame). The COORDS
+					attribute should be used as in HTML 4.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="BEGIN" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					BEGIN: an optional string attribute specifying the beginning location
+					for a subpart of the referenced file. Used with the END attribute.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="END" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					END: an optional string attribute specifying the ending location for a
+					subpart of the referenced file. Used with the BEGIN attribute.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="BETYPE" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					BETYPE: Begin/End Type.
+					An optional attribute specifying the syntax used in the values recorded
+					in the BEGIN and END attributes. It must have one of the following
+					values:
+					BYTE: a byte offset
+					IDREF: an XML ID value for an element in the content file
+					SMIL: a SMIL time value
+					MIDI: a MIDI time code
+					SMPTE-25: SMPTE time code for 25 frame/second material
+					SMPTE-24: SMPTE time code for 24 frame/second material
+					SMPTE-DF30: SMPTE time code for 30 frame/second drop frame material
+					SMPTE-NDF30: SMPTE time code for 30 frame/second non-drop frame material
+					SMPTE-DF29.97: SMPTE time code for 29.97 frame/second drop frame
+					material
+					SMPTE-NDF29.97: SMPTE time code for 29.97 frame/second non-drop frame material
+					TIME: a simple time code of the form HH:MM:SS
+					TCF: a Time code Character Format value
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="BYTE"/>
+					<xsd:enumeration value="IDREF"/>
+					<xsd:enumeration value="SMIL"/>
+					<xsd:enumeration value="MIDI"/>
+					<xsd:enumeration value="SMPTE-25"/>
+					<xsd:enumeration value="SMPTE-24"/>
+					<xsd:enumeration value="SMPTE-DF30"/>
+					<xsd:enumeration value="SMPTE-NDF30"/>
+					<xsd:enumeration value="SMPTE-DF29.97"/>
+					<xsd:enumeration value="SMPTE-NDF29.97"/>
+					<xsd:enumeration value="TIME"/>
+					<xsd:enumeration value="TCF"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="EXTENT" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+						EXTENT: an optional string attribute specifying the duration of the
+						segment pointed to by the area element.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="EXTTYPE" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+						EXTTYPE: Extent Type
+						an option attribute specifying the syntax used for the value in the
+						EXTENT attribute. See the BETYPE attribute for the specific values
+						which may be used in EXTTYPE.
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="BYTE"/>
+					<xsd:enumeration value="SMIL"/>
+					<xsd:enumeration value="MIDI"/>
+					<xsd:enumeration value="SMPTE-25"/>
+					<xsd:enumeration value="SMPTE-24"/>
+					<xsd:enumeration value="SMPTE-DF30"/>
+					<xsd:enumeration value="SMPTE-NDF30"/>
+					<xsd:enumeration value="SMPTE-DF29.97"/>
+					<xsd:enumeration value="SMPTE-NDF29.97"/>
+					<xsd:enumeration value="TIME"/>
+					<xsd:enumeration value="TCF"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="ADMID" type="xsd:IDREFS" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+						ADMID: an optional attribute listing the XML ID values for the
+						administrative metadata sections within the METS document that provide
+						information regarding this area.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="CONTENTIDS" type="URIs" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+						CONTENTIDS: Content IDs for this division (equivalent to DIDL DII)
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="seqType">
+		<xsd:annotation>
+			<xsd:documentation>
+					seq:Sequence of files.
+					The seq element should be used to link a div to a set of content files
+					when those files should be played/displayed sequentially to deliver
+					content to a user. Individual &lt;area&gt; subelements within the seq
+					element provide the links to the files or portions thereof.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="area" type="areaType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					ID: an optional XML ID value.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="mdSecType">
+		<xsd:annotation>
+			<xsd:documentation>
+					mdSec (metadata section) Complex Type
+					A generic framework for pointing to/including metadata within a METS
+					document, a la Warwick Framework.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="mdWrap" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>mdWrap: metadata wrapper.
+						The mdWrap element is a generic element used throughout the METS
+						schema to allow the encoder to place arbitrary metadata conforming
+						to other standards/schema within a METS document. The included
+						metadata is encoded in XML, it is placed directly within the
+						mdWrap element.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="xmlData" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>xmlData:
+									A wrapper element to contain XML
+									encoded metadata.
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:all>
+									<xsd:element ref="dnx:dnx" minOccurs="0" maxOccurs="unbounded"/>
+								</xsd:all>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+					<xsd:attributeGroup ref="METADATA" />
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="ID" type="xsd:ID" use="required">
+			<xsd:annotation>
+				<xsd:documentation>ID: a required XML ID value
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="mdSecTypeSourceMD">
+		<xsd:annotation>
+			<xsd:documentation>
+					mdSec (metadata section) Complex Type
+					A generic framework for pointing to/including metadata within a METS
+					document, a la Warwick Framework.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="mdWrap" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>mdWrap: metadata wrapper.
+						The mdWrap element is a generic element used throughout the METS
+						schema to allow the encoder to place arbitrary metadata conforming
+						to other standards/schema within a METS document. The included
+						metadata is encoded in XML, it is placed directly within the
+						mdWrap element.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="xmlData" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>xmlData:
+									A wrapper element to contain XML
+									encoded metadata.
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:any namespace="##any" processContents="lax"
+										maxOccurs="unbounded" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+					<xsd:attributeGroup ref="METADATA" />
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="ID" type="xsd:ID" use="required">
+			<xsd:annotation>
+				<xsd:documentation>ID: a required XML ID value
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="mdSecTypeDC">
+		<xsd:annotation>
+			<xsd:documentation>mdSec (metadata section) Complex Type
+				A framework for pointing to/including metadata within a METS document
+				on IE, Representation, and File levels, a la Warwick Framework.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="mdWrap">
+				<xsd:annotation>
+					<xsd:documentation>mdWrap: metadata wrapper.
+						The mdWrap element is a generic element used throughout the METS
+						schema to allow the encoder to place arbitrary metadata conforming
+						to other standards/schema within a METS document. The included
+						metadata can be encoded in XML, in which case it is placed
+						directly within the mdWrap element.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="xmlData">
+							<xsd:annotation>
+								<xsd:documentation>xmlData:
+									A wrapper element to contain XML encoded metadata.
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:any namespace="##any" processContents="lax"
+										maxOccurs="unbounded" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+					<xsd:attributeGroup ref="METADATA-DC" />
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="ID" type="xsd:ID" use="required">
+			<xsd:annotation>
+				<xsd:documentation>ID: a required XML ID value
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="fileType">
+		<xsd:annotation>
+			<xsd:documentation>file: File element.
+				The file element provides
+				access to content files for a METS object. A file element may only
+				one FLocat element, which provides a pointer to a content file.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="FLocat" minOccurs="1" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>FLocat: File Location.
+						The FLocat element provides a pointer to the location of a content
+						file. It uses the XLink syntax to provide linking information
+						indicating the actual location of the content file, along with a
+						few additional attributes specifying additional linking
+						information. When creating a mets to be deposited into Rosetta the
+						path has to be relative to the 'streams' directory of the loaded material.
+						NOTE: FLocat is an empty element. The location of the resource pointed
+						to MUST be stored in the xlink:href element. The files all must belong to the structMaps's representation.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attributeGroup ref="LOCATION" />
+					<xsd:attributeGroup ref="xlink:simpleLink" />
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="required">
+			<xsd:annotation>
+				<xsd:documentation>ID: an XML ID value.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="DMDID" type="xsd:IDREFS" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>DMDID: an optional attribute used to list the XML ID
+				     attribute values for descriptive metadata sections in the METS document that provide information regarding this file.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="MIMETYPE" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>MIMETYPE: an optional string attribute providing the MIME type for the file.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="ADMID" type="xsd:IDREFS" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>ADMID: an optional attribute used to list the XML ID attribute values for administrative metadata sections in the
+					METS document that provide information regarding this file.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="GROUPID" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>GROUPID: an optional string attribute which may be used to record an identifier that establishes a correspondence
+								between this file and files in other file groups, allowing navigation between these representations in the IE Viewer.
+								For example, a master image in one file group would share the same GROUPID value with a derivative copy in a second file group.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:attributeGroup name="METADATA">
+		<xsd:attribute name="MDTYPE" use="required">
+			<xsd:annotation>
+				<xsd:documentation>MDTYPE: a required attribute specifying the type
+					of metadata being pointed at.
+					It must have one of the following values:
+					MARC: any form of MARC record
+					MODS: metadata in the Library of Congress MODS format
+					EAD: Encoded Archival Description finding aid
+					DC: Dublin Core
+					NISOIMG: NISO Technical Metadata for Digital Still Images
+					LC-AV: technical metadata specified in the Library of Congress A/V
+					prototyping project
+					VRA: Visual Resources Association Core
+					TEIHDR: Text Encoding Initiative Header
+					DDI: Data Documentation Initiative
+					FGDC: Federal Geographic Data Committee metadata
+					OTHER: metadata in a format not specified above.
+					In Rosetta, For DNX sections use the type: OTHER.
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="MARC" />
+					<xsd:enumeration value="MODS" />
+					<xsd:enumeration value="EAD" />
+					<xsd:enumeration value="DC" />
+					<xsd:enumeration value="NISOIMG" />
+					<xsd:enumeration value="LC-AV" />
+					<xsd:enumeration value="VRA" />
+					<xsd:enumeration value="TEIHDR" />
+					<xsd:enumeration value="DDI" />
+					<xsd:enumeration value="FGDC" />
+					<xsd:enumeration value="LOM" />
+					<xsd:enumeration value="PREMIS" />
+					<xsd:enumeration value="OTHER" />
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="OTHERMDTYPE" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>OTHERMDTYPE: Other Metadata Type
+					an optional
+					string which may be used to record the particular form of metadata
+					referenced by this element when the MDTYPE attribute has a value of
+					&quot;OTHER&quot;.
+					In Rosetta, For DNX sections use the &quot;dnx&quot; as the other
+					metadata type.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:attributeGroup>
+	<xsd:attributeGroup name="METADATA-DC">
+		<xsd:attribute name="MDTYPE" use="required">
+			<xsd:annotation>
+				<xsd:documentation>MDTYPE: a required attribute specifying the type
+					of metadata being pointed at.It must have the following value:DC:
+					Dublin Core
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="DC" />
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:attributeGroup>
+	<xsd:attributeGroup name="LOCATION">
+		<xsd:attribute name="LOCTYPE" use="required">
+			<xsd:annotation>
+				<xsd:documentation>LOCTYPE: Location Type
+					the type of locator used to reference a file. It must have the
+					following value:
+					URL: Uniform Resource Locator
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="URL" />
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:attributeGroup>
+</xsd:schema>
