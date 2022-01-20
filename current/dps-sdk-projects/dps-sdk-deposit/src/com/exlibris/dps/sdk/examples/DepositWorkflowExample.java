@@ -15,6 +15,7 @@ import com.exlibris.dps.SipStatusInfo;
 import com.exlibris.dps.SipWebServices_Service;
 import com.exlibris.dps.sdk.pds.HeaderHandlerResolver;
 
+
 public class DepositWorkflowExample {
 
 	static final String userName = "admin1";
@@ -38,8 +39,6 @@ public class DepositWorkflowExample {
 	 *            location of ingest.properties file.
 	 */
 	public static void main(String[] args) {
-
-		org.apache.log4j.helpers.LogLog.setQuietMode(true);
 
 		try {
 			ProducerWebServices_Service proWS = new ProducerWebServices_Service(new URL(PRODUCER_WSDL_URL),new QName("http://dps.exlibris.com/", "ProducerWebServices"));

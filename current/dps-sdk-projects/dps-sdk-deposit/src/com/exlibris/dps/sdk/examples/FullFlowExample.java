@@ -78,7 +78,6 @@ public class FullFlowExample {
 
 	public static void main(String[] args) {
 
-		org.apache.log4j.helpers.LogLog.setQuietMode(true);
 
 		try {
 			// 1. Create a SIP directory

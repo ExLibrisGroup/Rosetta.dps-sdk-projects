@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xsd:schema version="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+<xsd:schema version="3.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns="http://www.exlibrisgroup.com/dps/dnx"
 	targetNamespace="http://www.exlibrisgroup.com/dps/dnx"
 	elementFormDefault="qualified">
@@ -39,6 +39,7 @@
 				<xsd:alternative test="@id='environmentExtension'" type="environmentExtensionSection"/>
 				<xsd:alternative test="@id='signatureInformation'" type="signatureInformationSection"/>
 				<xsd:alternative test="@id='signatureInformationExtension'" type="signatureInformationExtensionSection"/>
+				<xsd:alternative test="@id='IERelationship'" type="IERelationshipSection"/>
 				<xsd:alternative test="@id='relationship'" type="relationshipSection"/>
 				<xsd:alternative test="@id='linkingIEIdentifier'" type="linkingIEIdentifierSection"/>
 				<xsd:alternative test="@id='producer'" type="producerSection"/>
@@ -60,7 +61,7 @@
 				</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
-		<xsd:assert test=" count(*[@id='generalIECharacteristics']) = (0,1) and  count(*[@id='generalRepCharacteristics']) = (0,1) and  count(*[@id='generalFileCharacteristics']) = (0,1) and  count(*[@id='objectCharacteristics']) = (0,1) and  count(*[@id='CMS']) = (0,1) and  count(*[@id='webHarvesting']) = (0,1) and  count(*[@id='internalIdentifier']) = (0,1) and  count(*[@id='objectIdentifier']) = (0,1) and  count(*[@id='preservationLevel']) = (0,1) and  count(*[@id='significantProperties']) = (0,1) and  count(*[@id='fileFixity']) = (0,1) and  count(*[@id='fileFormat']) = (0,1) and  count(*[@id='fileVirusCheck']) = (0,1) and  count(*[@id='fileValidation']) = (0,1) and  count(*[@id='vsOutcome']) = (0,1) and  count(*[@id='creatingApplication']) = (0,1) and  count(*[@id='inhibitors']) = (0,1) and  count(*[@id='objectCharacteristicsExtension']) = (0,1) and  count(*[@id='environment']) = (0,1) and  count(*[@id='environmentDependencies']) = (0,1) and  count(*[@id='environmentSoftware']) = (0,1) and  count(*[@id='envSoftwareRegistry']) = (0,1) and  count(*[@id='environmentHardware']) = (0,1) and  count(*[@id='envHardwareRegistry']) = (0,1) and  count(*[@id='environmentExtension']) = (0,1) and  count(*[@id='signatureInformation']) = (0,1) and  count(*[@id='signatureInformationExtension']) = (0,1) and  count(*[@id='relationship']) = (0,1) and  count(*[@id='linkingIEIdentifier']) = (0,1) and  count(*[@id='producer']) = (0,1) and  count(*[@id='producerAgent']) = (0,1) and  count(*[@id='event']) = (0,1) and  count(*[@id='linkingRightsStatementIdentifier']) = (0,1) and  count(*[@id='accessRightsPolicy']) = (0,1) and  count(*[@id='retentionPolicy']) = (0,1) and  count(*[@id='grantedRightsStatement']) = (0,1) and  count(*[@id='metaData']) = (0,1) and  count(*[@id='workProduct']) = (0,1) and  count(*[@id='Collection']) = (0,1)"/>
+		<xsd:assert test=" count(*[@id='generalIECharacteristics']) = (0,1) and  count(*[@id='generalRepCharacteristics']) = (0,1) and  count(*[@id='generalFileCharacteristics']) = (0,1) and  count(*[@id='objectCharacteristics']) = (0,1) and  count(*[@id='CMS']) = (0,1) and  count(*[@id='webHarvesting']) = (0,1) and  count(*[@id='internalIdentifier']) = (0,1) and  count(*[@id='objectIdentifier']) = (0,1) and  count(*[@id='preservationLevel']) = (0,1) and  count(*[@id='significantProperties']) = (0,1) and  count(*[@id='fileFixity']) = (0,1) and  count(*[@id='fileFormat']) = (0,1) and  count(*[@id='fileVirusCheck']) = (0,1) and  count(*[@id='fileValidation']) = (0,1) and  count(*[@id='vsOutcome']) = (0,1) and  count(*[@id='creatingApplication']) = (0,1) and  count(*[@id='inhibitors']) = (0,1) and  count(*[@id='objectCharacteristicsExtension']) = (0,1) and  count(*[@id='environment']) = (0,1) and  count(*[@id='environmentDependencies']) = (0,1) and  count(*[@id='environmentSoftware']) = (0,1) and  count(*[@id='envSoftwareRegistry']) = (0,1) and  count(*[@id='environmentHardware']) = (0,1) and  count(*[@id='envHardwareRegistry']) = (0,1) and  count(*[@id='environmentExtension']) = (0,1) and  count(*[@id='signatureInformation']) = (0,1) and  count(*[@id='signatureInformationExtension']) = (0,1) and  count(*[@id='IERelationship']) = (0,1) and  count(*[@id='relationship']) = (0,1) and  count(*[@id='linkingIEIdentifier']) = (0,1) and  count(*[@id='producer']) = (0,1) and  count(*[@id='producerAgent']) = (0,1) and  count(*[@id='event']) = (0,1) and  count(*[@id='linkingRightsStatementIdentifier']) = (0,1) and  count(*[@id='accessRightsPolicy']) = (0,1) and  count(*[@id='retentionPolicy']) = (0,1) and  count(*[@id='grantedRightsStatement']) = (0,1) and  count(*[@id='metaData']) = (0,1) and  count(*[@id='workProduct']) = (0,1) and  count(*[@id='Collection']) = (0,1)"/>
 	</xsd:complexType>
 
 	<xsd:complexType name="generalIECharacteristicsSection">
@@ -692,6 +693,29 @@
 						</xsd:element>
 					</xsd:sequence>
 					<xsd:assert test="count(*[@id='signatureInformationExtension']) = (0,1)"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="IERelationshipSection">
+		<xsd:annotation>
+			<xsd:documentation></xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="record" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:alternative test="@id='relationshipType'" type="stringType"/>
+							<xsd:alternative test="@id='relationshipSubType'" type="stringType"/>
+							<xsd:alternative test="@id='relatedObjectIdentifierType'" type="stringType"/>
+							<xsd:alternative test="@id='relatedObjectIdentifierValue'" type="stringType"/>
+							<xsd:alternative test="@id='relatedObjectSequence'" type="nullableString"/>
+							<xsd:alternative type="errorType"/>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:assert test="count(*[@id='relationshipType']) = 1 and count(*[@id='relationshipSubType']) = 1 and count(*[@id='relatedObjectIdentifierType']) = 1 and count(*[@id='relatedObjectIdentifierValue']) = 1 and count(*[@id='relatedObjectSequence']) = (0,1)"/>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>

@@ -115,14 +115,6 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="xss_escape" type="xs:boolean" minOccurs="0"
-				maxOccurs="1">
-				<xs:annotation>
-					<xs:documentation>
-						Supported only in page generator
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 			<xs:element name="fieldset_legend" type="xs:string"
 				minOccurs="0" maxOccurs="1">
 				<xs:annotation>
@@ -134,6 +126,13 @@
 				</xs:annotation>
 			</xs:element>
 		</xs:all>
+		<xs:attribute name="xss_escape" type="xs:boolean" default="false">
+			<xs:annotation>
+				<xs:documentation>
+					Whether to escape field. default is false.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 
 
@@ -469,14 +468,6 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="xss_escape" type="xs:boolean" minOccurs="0"
-				maxOccurs="1">
-				<xs:annotation>
-					<xs:documentation>
-						Supported only in page generator
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 			<xs:element name="label" type="xs:string" minOccurs="0"
 				maxOccurs="1">
 				<xs:annotation>
@@ -489,6 +480,13 @@
 				<xs:documentation>
 					User roles list, only user with the given roles can
 					see the current section
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="xss_escape" type="xs:boolean" default="true">
+			<xs:annotation>
+				<xs:documentation>
+					Whether to escape field. default is true.
 				</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
