@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 release 7.2
 =============
 
@@ -30,34 +29,3 @@ dnx_sip.xsd
 x_form.xsd
 ---------------------
 - No updates
-=======
-7.1 Release
-===============
-
-
-mets_rosetta.xsd
-------------------------
-- No updates
-
-
-mets_rosetta_aip.xsd
-------------------------
-- No updates
-
-
-dnx_aip.xsd
-------------------------
-- The fileValidation section now includes also the error id
-- Version was updated to 2.0 
-
-
-dnx_sip.xsd
-------------------------
-- The fileValidation section now includes also the error id
-- Version was updated to 2.0 
-
-
-x_form.xsd
-------------------------
-- No updates
->>>>>>> 49ef8f635e41c9ad3f486d81e41d68fd718340f1
