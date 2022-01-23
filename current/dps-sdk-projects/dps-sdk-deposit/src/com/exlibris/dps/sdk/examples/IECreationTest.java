@@ -21,8 +21,6 @@ public class IECreationTest {
 
 		public static void main(String[] args) {
 
-			org.apache.log4j.helpers.LogLog.setQuietMode(true);
-
 			try {
 			String rootDir = null;
 			if ((args != null) && (args.length > 0) &&
