@@ -1,4 +1,21 @@
 <?xml version="1.0"?>
+
+<!-- July 2021 -->
+<!-- Rosetta Version 7.1 -->
+<!-- Change History -->
+<!-- Version 7.1 Changes:
+	1. The fileValidation section now includes also the error id
+	2. Version was updated to 2.0
+-->
+
+<!-- January 2022 -->
+<!-- Rosetta Version 7.2 -->
+<!-- Change History -->
+<!-- Version 7.2 Changes:
+	1. New IERelationship section was added for strcutural IE relationships
+	2. Version was updated to 3.0
+-->
+
 <xsd:schema version="3.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns="http://www.exlibrisgroup.com/dps/dnx"
 	targetNamespace="http://www.exlibrisgroup.com/dps/dnx"

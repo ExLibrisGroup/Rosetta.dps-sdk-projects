@@ -25,6 +25,13 @@
 	1. Multiple techMD elements are allowed in amdSec
 -->
 
+<!-- January 2022 -->
+<!-- Rosetta Version 7.2 -->
+<!-- Change History -->
+<!-- Version 7.2 Changes:
+	1. The fileSec section is no longer mandatory. A missing/empty section indicates that the IE is a structural IE (vs a content IE).
+-->
+
 <xsd:schema version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:dnx="http://www.exlibrisgroup.com/dps/dnx"
@@ -87,21 +94,23 @@
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="fileSec">
+			<xsd:element name="fileSec" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>fileSec: Content File Section.
 						The content file section records information regarding all of the
-						data files which comprise the digital library object.
+						data files which comprise the digital library object. If missing 
+						or empty then the IE is considered a structural IE, otherwise it 
+						is considered a content IE.
 					</xsd:documentation>
 				</xsd:annotation>
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="fileGrp" minOccurs="1" maxOccurs="unbounded">
+						<xsd:element name="fileGrp" minOccurs="0" maxOccurs="unbounded">
 							<xsd:annotation>
 								<xsd:documentation>fileGrp: File Group In Rosetta the File Group
 									element is used to define A Representation. This element list
-									the files included in each of the Representations. Rosetta
-									requires every IE to include by minimum one Representation.
+									the files included in each of the Representations. Content IE
+									requires to include by minimum one Representation.
 								</xsd:documentation>
 							</xsd:annotation>
 							<xsd:complexType>
@@ -213,8 +222,7 @@
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:choice>
-			<xsd:element name="file" type="fileType" minOccurs="1"
-				maxOccurs="unbounded" />
+			<xsd:element name="file" type="fileType" maxOccurs="unbounded" />
 			<!-- file element originally here -->
 		</xsd:choice>
 		<xsd:attribute name="ID" type="xsd:ID" use="required">
