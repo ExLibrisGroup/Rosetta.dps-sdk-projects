@@ -12,20 +12,11 @@
 <!-- Rosetta Version 7.2 -->
 <!-- Change History -->
 <!-- Version 7.2 Changes:
-	1. New IERelationship section was added for structural IE relationships
+	1. New IERelationship section was added for strcutural IE relationships
 	2. Version was updated to 3.0
 -->
 
-<!-- June 2022 -->
-<!-- Rosetta Version 7.3 -->
-<!-- Change History -->
-<!-- Version 7.3 Changes:
-	1. New fileTechnicalMetadataExtraction section was added for Splitting validation & extraction
-	2. New validationDetails field was added to the fileValidation section
-	3. Version was updated to 4.0
--->
-
-<xsd:schema version="4.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+<xsd:schema version="3.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns="http://www.exlibrisgroup.com/dps/dnx"
 	targetNamespace="http://www.exlibrisgroup.com/dps/dnx"
 	elementFormDefault="qualified">
@@ -52,7 +43,6 @@
 				<xsd:alternative test="@id='fileFormat'" type="fileFormatSection"/>
 				<xsd:alternative test="@id='fileVirusCheck'" type="fileVirusCheckSection"/>
 				<xsd:alternative test="@id='fileValidation'" type="fileValidationSection"/>
-				<xsd:alternative test="@id='fileTechnicalMetadataExtraction'" type="fileTechnicalMetadataExtractionSection"/>
 				<xsd:alternative test="@id='vsOutcome'" type="vsOutcomeSection"/>
 				<xsd:alternative test="@id='creatingApplication'" type="creatingApplicationSection"/>
 				<xsd:alternative test="@id='inhibitors'" type="inhibitorsSection"/>
@@ -88,7 +78,7 @@
 				</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
-		<xsd:assert test=" count(*[@id='generalIECharacteristics']) = (0,1) and  count(*[@id='generalRepCharacteristics']) = (0,1) and  count(*[@id='generalFileCharacteristics']) = (0,1) and  count(*[@id='objectCharacteristics']) = (0,1) and  count(*[@id='CMS']) = (0,1) and  count(*[@id='webHarvesting']) = (0,1) and  count(*[@id='internalIdentifier']) = (0,1) and  count(*[@id='objectIdentifier']) = (0,1) and  count(*[@id='preservationLevel']) = (0,1) and  count(*[@id='significantProperties']) = (0,1) and  count(*[@id='fileFixity']) = (0,1) and  count(*[@id='fileFormat']) = (0,1) and  count(*[@id='fileVirusCheck']) = (0,1) and  count(*[@id='fileValidation']) = (0,1) and  count(*[@id='fileTechnicalMetadataExtraction']) = (0,1) and  count(*[@id='vsOutcome']) = (0,1) and  count(*[@id='creatingApplication']) = (0,1) and  count(*[@id='inhibitors']) = (0,1) and  count(*[@id='objectCharacteristicsExtension']) = (0,1) and  count(*[@id='environment']) = (0,1) and  count(*[@id='environmentDependencies']) = (0,1) and  count(*[@id='environmentSoftware']) = (0,1) and  count(*[@id='envSoftwareRegistry']) = (0,1) and  count(*[@id='environmentHardware']) = (0,1) and  count(*[@id='envHardwareRegistry']) = (0,1) and  count(*[@id='environmentExtension']) = (0,1) and  count(*[@id='signatureInformation']) = (0,1) and  count(*[@id='signatureInformationExtension']) = (0,1) and  count(*[@id='IERelationship']) = (0,1) and  count(*[@id='relationship']) = (0,1) and  count(*[@id='linkingIEIdentifier']) = (0,1) and  count(*[@id='producer']) = (0,1) and  count(*[@id='producerAgent']) = (0,1) and  count(*[@id='event']) = (0,1) and  count(*[@id='linkingRightsStatementIdentifier']) = (0,1) and  count(*[@id='accessRightsPolicy']) = (0,1) and  count(*[@id='retentionPolicy']) = (0,1) and  count(*[@id='grantedRightsStatement']) = (0,1) and  count(*[@id='metaData']) = (0,1) and  count(*[@id='workProduct']) = (0,1) and  count(*[@id='Collection']) = (0,1)"/>
+		<xsd:assert test=" count(*[@id='generalIECharacteristics']) = (0,1) and  count(*[@id='generalRepCharacteristics']) = (0,1) and  count(*[@id='generalFileCharacteristics']) = (0,1) and  count(*[@id='objectCharacteristics']) = (0,1) and  count(*[@id='CMS']) = (0,1) and  count(*[@id='webHarvesting']) = (0,1) and  count(*[@id='internalIdentifier']) = (0,1) and  count(*[@id='objectIdentifier']) = (0,1) and  count(*[@id='preservationLevel']) = (0,1) and  count(*[@id='significantProperties']) = (0,1) and  count(*[@id='fileFixity']) = (0,1) and  count(*[@id='fileFormat']) = (0,1) and  count(*[@id='fileVirusCheck']) = (0,1) and  count(*[@id='fileValidation']) = (0,1) and  count(*[@id='vsOutcome']) = (0,1) and  count(*[@id='creatingApplication']) = (0,1) and  count(*[@id='inhibitors']) = (0,1) and  count(*[@id='objectCharacteristicsExtension']) = (0,1) and  count(*[@id='environment']) = (0,1) and  count(*[@id='environmentDependencies']) = (0,1) and  count(*[@id='environmentSoftware']) = (0,1) and  count(*[@id='envSoftwareRegistry']) = (0,1) and  count(*[@id='environmentHardware']) = (0,1) and  count(*[@id='envHardwareRegistry']) = (0,1) and  count(*[@id='environmentExtension']) = (0,1) and  count(*[@id='signatureInformation']) = (0,1) and  count(*[@id='signatureInformationExtension']) = (0,1) and  count(*[@id='IERelationship']) = (0,1) and  count(*[@id='relationship']) = (0,1) and  count(*[@id='linkingIEIdentifier']) = (0,1) and  count(*[@id='producer']) = (0,1) and  count(*[@id='producerAgent']) = (0,1) and  count(*[@id='event']) = (0,1) and  count(*[@id='linkingRightsStatementIdentifier']) = (0,1) and  count(*[@id='accessRightsPolicy']) = (0,1) and  count(*[@id='retentionPolicy']) = (0,1) and  count(*[@id='grantedRightsStatement']) = (0,1) and  count(*[@id='metaData']) = (0,1) and  count(*[@id='workProduct']) = (0,1) and  count(*[@id='Collection']) = (0,1)"/>
 	</xsd:complexType>
 
 	<xsd:complexType name="generalIECharacteristicsSection">
@@ -438,33 +428,10 @@
 							<xsd:alternative test="@id='isWellFormed'" type="nullableBoolean"/>
 							<xsd:alternative test="@id='errorMessage'" type="nullableString"/>
 							<xsd:alternative test="@id='errorId'" type="nullableString"/>
-							<xsd:alternative test="@id='validationDetails'" type="nullableString"/>
 							<xsd:alternative type="errorType"/>
 						</xsd:element>
 					</xsd:sequence>
-					<xsd:assert test="count(*[@id='agent']) = (0,1) and count(*[@id='pluginName']) = (0,1) and count(*[@id='status']) = (0,1) and count(*[@id='format']) = (0,1) and count(*[@id='version']) = (0,1) and count(*[@id='mimeType']) = (0,1) and count(*[@id='profile']) = (0,1) and count(*[@id='isValid']) = (0,1) and count(*[@id='isWellFormed']) = (0,1) and count(*[@id='errorMessage']) = (0,1) and count(*[@id='errorId']) = (0,1) and count(*[@id='validationDetails']) = (0,1)"/>
-				</xsd:complexType>
-			</xsd:element>
-		</xsd:sequence>
-		<xsd:attribute name="id" use="required"/>
-	</xsd:complexType>
-	<xsd:complexType name="fileTechnicalMetadataExtractionSection">
-		<xsd:annotation>
-			<xsd:documentation></xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence>
-			<xsd:element name="record" minOccurs="0" maxOccurs="1">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="key"  minOccurs="0" maxOccurs="unbounded">
-							<xsd:alternative test="@id='agent'" type="nullableString"/>
-							<xsd:alternative test="@id='pluginName'" type="nullableString"/>
-							<xsd:alternative test="@id='errorMessage'" type="nullableString"/>
-							<xsd:alternative test="@id='errorId'" type="nullableString"/>
-							<xsd:alternative type="errorType"/>
-						</xsd:element>
-					</xsd:sequence>
-					<xsd:assert test="count(*[@id='agent']) = (0,1) and count(*[@id='pluginName']) = (0,1) and count(*[@id='errorMessage']) = (0,1) and count(*[@id='errorId']) = (0,1)"/>
+					<xsd:assert test="count(*[@id='agent']) = (0,1) and count(*[@id='pluginName']) = (0,1) and count(*[@id='status']) = (0,1) and count(*[@id='format']) = (0,1) and count(*[@id='version']) = (0,1) and count(*[@id='mimeType']) = (0,1) and count(*[@id='profile']) = (0,1) and count(*[@id='isValid']) = (0,1) and count(*[@id='isWellFormed']) = (0,1) and count(*[@id='errorMessage']) = (0,1) and count(*[@id='errorId']) = (0,1)"/>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>

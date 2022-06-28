@@ -1,30 +1,29 @@
-release 7.3
+release 7.2
 =============
 
 
 mets_rosetta.xsd
 ---------------------
-- CONTENTIDS attribute was added to the divType-Ros complex type under the structMap section. Already exists for the divType complex type.
+- The fileSec section is no longer mandatory. A missing/empty section indicates that the IE is a structural IE (vs a content IE). 
 
 
 
 mets_rosetta_aip.xsd
 ---------------------
-- CONTENTIDS attribute was added to the divType-Ros complex type under the structMap section. Already exists for the divType complex type. 
+- The fileSec section is no longer mandatory. A missing/empty section indicates that the IE is a structural IE (vs a content IE). 
 
 
 
 dnx_aip.xsd
 ---------------------
-- New fileTechnicalMetadataExtraction section was added for storing information regarding the file's technical metadata extraction agent
-- New validationDetails field was added to the fileValidation section for storing additional file's format validation details (when applicable)
-- Version was updated to 4.0 
+- New IERelationship section was added for strcutural IE relationships
+- Version was updated to 3.0 
 
 
 dnx_sip.xsd
 ---------------------
-- No updates
-
+- New IERelationship section was added for strcutural IE relationships
+- Version was updated to 3.0 
 
 
 x_form.xsd

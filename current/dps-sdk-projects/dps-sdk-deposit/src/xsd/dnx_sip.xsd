@@ -12,19 +12,11 @@
 <!-- Rosetta Version 7.2 -->
 <!-- Change History -->
 <!-- Version 7.2 Changes:
-	1. New IERelationship section was added for structural IE relationships
+	1. New IERelationship section was added for strcutural IE relationships
 	2. Version was updated to 3.0
 -->
 
-<!-- June 2022 -->
-<!-- Rosetta Version 7.3 -->
-<!-- Change History -->
-<!-- Version 7.3 Changes:
-	1. New fileTechnicalMetadataExtraction section was added for Splitting validation & extraction
-	2. Version was updated to 4.0
--->
-
-<xsd:schema version="4.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+<xsd:schema version="3.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns="http://www.exlibrisgroup.com/dps/dnx"
 	targetNamespace="http://www.exlibrisgroup.com/dps/dnx"
 	elementFormDefault="qualified">

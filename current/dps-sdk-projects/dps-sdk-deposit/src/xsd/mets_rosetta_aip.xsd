@@ -32,13 +32,6 @@
 	1. The fileSec section is no longer mandatory. A missing/empty section indicates that the IE is a structural IE (vs a content IE).
 -->
 
-<!-- June 2022 -->
-<!-- Rosetta Version 7.3 -->
-<!-- Change History -->
-<!-- Version 7.3 Changes:
-	1. Add CONTENTIDS attribute to the StructMap divType-Ros element
--->
-
 <xsd:schema version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:dnx="http://www.exlibrisgroup.com/dps/dnx"
@@ -685,13 +678,6 @@
 					<xsd:enumeration value="FILE" />
 				</xsd:restriction>
 			</xsd:simpleType>
-		</xsd:attribute>
-		<xsd:attribute name="CONTENTIDS" type="URIs" use="optional">
-			<xsd:annotation>
-				<xsd:documentation>
-						CONTENTIDS: Content IDs for this division (equivalent to DIDL DII)
-				</xsd:documentation>
-			</xsd:annotation>
 		</xsd:attribute>
 	</xsd:complexType>
 	<xsd:simpleType name="URIs">
