@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+  <Appenders>
+
+	<File name="File" fileName="/exlibris/dps/dps-sdk.log">
+        <PatternLayout pattern="%d{ABSOLUTE} %-5p [%c{1}] %m%n" />
+    </File>
+
+
+    <!-- ============================== -->
+	<!-- Append messages to the console -->
+	<!-- ============================== -->
+
+	<Console name="STDOUT" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{ABSOLUTE} %-5p [%t] [%x] [%c{1}] %m%n"/>
+    </Console>
+
+  </Appenders>
+
+  <Loggers>
+
+    <!-- ================ -->
+	<!-- Limit categories -->
+	<!-- ================ -->
+
+	<!-- Limit the org.apache category to INFO as its DEBUG is verbose -->
+	<Logger name="org.apache" level="info"/>
+
+    <Root level="info">
+      <AppenderRef ref="STDOUT"/>
+      <AppenderRef ref="File"/>
+    </Root>
+  </Loggers>
+</Configuration>

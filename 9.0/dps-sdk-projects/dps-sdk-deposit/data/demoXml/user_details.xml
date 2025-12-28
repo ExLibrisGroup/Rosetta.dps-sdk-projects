@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fr:deposit_activity_list_result xmlns:fr="http://com/exlibris/digitool/common/forms/xmlbeans">
+	<userInfoXml>
+		<firstName>John</firstName>
+		<lastName>Smith</lastName>
+		<userName>ProdAg</userName>
+		<expiryDate>2008-05-06</expiryDate>
+		<jobTitle>Curator</jobTitle>
+		<address1>Galagung St.1341</address1>
+		<address2>Junglao</address2>
+		<address3 />
+		<address4 />
+		<address5>China</address5>
+		<zip>42344</zip>
+		<emailAddress>huji@gailung.org</emailAddress>
+		<webSiteUrl>http://www.gailung.org</webSiteUrl>
+		<telephone1>587-56-19876201</telephone1>
+		<telephone2 />
+		<userGruop />
+	</userInfoXml>
+
+</fr:deposit_activity_list_result>

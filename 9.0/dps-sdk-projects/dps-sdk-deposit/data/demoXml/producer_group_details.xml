@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<producer_info xmlns="http://www.exlibrisgroup.com/xsd/dps/backoffice/service" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <status xmlns="">ACTIVE</status>
+  <expiry_date xmlns="">08/02/2020</expiry_date>
+  <telephone_1 xmlns="">41234123</telephone_1>
+  <telephone_2 xsi:nil="true" xmlns=""/>
+  <web_site xmlns="">http://www.google.com.sg/</web_site>
+  <zip_code xmlns="">68745</zip_code>
+  <email xmlns="">Sasanga_ABEYWICKRAMA@nlb.gov.sg</email>
+  <institution xmlns="">LDNet</institution>
+  <department xmlns="">LDNet</department>
+  <street xmlns="">dps_test14</street>
+  <suburb xsi:nil="true" xmlns=""/>
+  <city xmlns="">Singapore</city>
+  <country xmlns="">Singapore</country>
+  <authoritative_name xmlns="">dps_test14</authoritative_name>
+  <user_name xmlns="">dps_test14</user_name>
+  <account_type xmlns="">GROUP</account_type>
+  <email_notify xmlns="">Y</email_notify>
+  <notes xmlns="">http://www.google.com.sg/</notes>
+  <local_field_1 xsi:nil="true" xmlns=""/>
+  <fax xmlns=""/>
+  <negotiator_id xmlns="">68745</negotiator_id>
+  <contactUser_id_1 xmlns="">50509</contactUser_id_1>
+  <contactUser_id_2 xmlns="">50509</contactUser_id_2>
+  <contactUser_id_3 xmlns="">50509</contactUser_id_3>
+  <producerProfile_id xmlns="">1</producerProfile_id>
+</producer_info>

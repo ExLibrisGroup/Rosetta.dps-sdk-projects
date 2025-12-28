@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fr:user_info xmlns:fr="http://www.exlibrisgroup.com/xsd/dps/backoffice/service">
+	<first_name>Nir</first_name>
+	<last_name>Kashi</last_name>
+	<user_name>nirka</user_name>
+	<expiry_date>08/02/2010</expiry_date>
+  	<job_title>BA</job_title>
+ 	<street>Galagung St.1341</street>
+ 	<suburb/>
+  	<city>Junglao</city>
+  	<country>China</country>
+  	<zip/>
+  	<web_site_url/>
+  	<email_address>nirk@exlibris.co.il</email_address>
+   	<telephone_1>587-56-19876201</telephone_1>
+   	<telephone_1/>
+   	<user_gruop/>
+</fr:user_info>
+
