@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	targetNamespace="http://com/exlibris/digitool/common/forms/xmlbeans"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:fr="http://com/exlibris/digitool/common/forms/xmlbeans"
+	elementFormDefault="unqualified">
+
+	<xs:element name="x_form">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="fr:x_form" />
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:complexType name="x_form">
+		<xs:all>
+			<xs:element name="version" type="fr:x_form_versions"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						The form support two versions 0.1 - > old
+						version that generate the form in HTML table 1.0
+						-> the new version that generate the form in
+						HTML Div. The page generator is using the 1.0
+						version
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="form_name" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Not supported in page generator version. The
+						name of the struts form behind this screen
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="description" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Not supported in page generator version
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="form_type" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Not supported in page generator version
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="position" type="xs:int" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Supported only in page generator Determines the
+						location of the form widget in the section.
+						The order of the widget in the section is
+						descending according to the position number.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mandatories" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						The name of the code table that holds a list of
+						mandatory fields.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="grid_x" type="xs:nonNegativeInteger"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Determine the number of column in the form
+						layout (the possible values are: 1 ,2 or 3).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="md_format" type="xs:nonNegativeInteger"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Not supported in page generator version
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="x_fields" type="fr:x_fields" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						start the definition of fields
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="x_sections" type="fr:x_sections"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+
+						start the definitions of sections
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="css_class" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Supported only in page generator
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="xss_escape" type="xs:boolean" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Supported only in page generator
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fieldset_legend" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						If this element is present, a fieldset will
+						appear. If it contains an i18N key, the fieldset
+						will include a legend.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+
+
+	<xs:complexType name="x_sections">
+		<xs:sequence>
+			<xs:element name="x_section" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="x_fields" type="fr:x_fields"
+							minOccurs="1" maxOccurs="1" />
+						<xs:element name="ui_description"
+							type="xs:string" minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation>
+									CodeTable key used for internal
+									documentation
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="label" type="xs:string"
+							minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation>
+									CodeTable key used for component
+									label
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ui_tool_tip" type="xs:string"
+							minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation>
+									CodeTable key used for component
+									tool tip
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="x_general_parameters"
+							type="fr:x_general_parameters" minOccurs="0" maxOccurs="1" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="x_fields">
+		<xs:sequence>
+			<xs:element name="x_field" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="fr:x_field" />
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="x_field">
+		<xs:all>
+			<xs:element name="field_name" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						The name of the property in the Struts or Excel
+						form that holds the selected presentation value
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="field_code" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Deprecated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="md_target_name" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Not supported in page generator
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="md_custom_target" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Not supported in page generator
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ui_description" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						CodeTable key used for internal documentation
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ui_explanation_text" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						not supported in page generator
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ui_tool_tip" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						codeTable key of the component tool tip
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="url_template" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Used in Link, Pickup, and buttonLink component.
+						The attribute set the URL
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="single" type="xs:boolean" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						If the value is "true" then the component will
+						always be presented in a single row (default
+						value is "false).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="default_value" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						The presentation value that appear as a default
+						value.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="code_value" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Deprecated</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="pos_x" type="xs:nonNegativeInteger"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						The horizontal position of the UI component
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pos_y" type="xs:nonNegativeInteger"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						The vertical position of the UI component
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="readonly" type="xs:boolean" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						If the value is "true" then the component will
+						be editable only on creation.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mandatory" type="xs:boolean" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						If true then a red dot will appear next to the
+						component indicate to the user that this field
+						is mandatory. The form will also validate this
+						field. (default value is "false")
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="x_general_parameters"
+				type="fr:x_general_parameters" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						each UI component has different parameters,
+						please see UI Component documentation
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="validator_class_name" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						The name of the class that validate the value of
+						the component. (please read the validators
+						Section in the form user guide to understand the
+						existing validators ).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="validator_error_code" type="xs:string"
+				minOccurs="0" maxOccurs="1" />
+			<xs:element name="populator_class_name" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						The populator class is the name of the class
+						that retrieves the component Map (code to value)
+						from the DB (for example the CodeTablePopulator
+						retrieves the Map form the code table).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="x_populator_parameters"
+				type="fr:x_populator_parameters" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						each populator has different parameters, please
+						see populator documentation
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="x_validator_parameters"
+				type="fr:x_validator_parameters" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						each validator has different parameters, please
+						see validator documentation
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="x_logic_type" type="fr:x_logic_type"
+				minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						The logic type can be : String, Enum, date (in
+						our case must be "String")
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="x_ui_type" type="fr:x_ui_type"
+				minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Determines the UI component type for example
+						TextField
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="x_options" type="fr:x_options"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						add list of values to the component
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="x_events" type="fr:x_events" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						In this attribute the programmer can add java
+						scripts events
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="x_field_modes" type="fr:x_field_modes"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Determines the behavior of the UI component in
+						different field modes. Field possible modes:
+						Edit, View, New Field possible behavior:
+						Editable, Readonly, Hidden. The default behavior
+						of the field is: Edit = Editable; New =
+						Editable; View = Readonly
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="x_field_value" type="xs:string"
+				minOccurs="0" maxOccurs="1" />
+			<xs:element name="attached_field" type="fr:x_field"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Relevant only for list column field and form
+						fields. Add additional field next to the given
+						field. Use primarily for attaching Icon to field
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="label_css_class" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						determines the CSS class of the field label
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="displayed_length" type="xs:integer"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						determines the max size of the presented text.
+						the text will be cut and the user can see the
+						whole text in a tooltip
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="visible" type="fr:visible" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Determine if the given field is visible or not.
+						Visible-field_name : the pageBean Boolean
+						property that determines whether this field is
+						visible or not
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="css_class" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						The CSS class of the given field
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="xss_escape" type="xs:boolean" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						Supported only in page generator
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="label" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>component label</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+		<xs:attribute name="roles" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>
+					User roles list, only user with the given roles can
+					see the current section
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="x_field_modes">
+		<xs:sequence>
+			<xs:element name="x_field_mode" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="viewMode"
+							type="fr:x_view_mode_type" minOccurs="1" maxOccurs="1" />
+						<xs:element name="value"
+							type="fr:x_field_mode_type" minOccurs="1" maxOccurs="1" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="x_general_parameters">
+		<xs:sequence>
+			<xs:element name="x_general_parameter" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="parameter" type="xs:string"
+							minOccurs="1" maxOccurs="1" />
+						<xs:element name="value" type="xs:string"
+							minOccurs="1" maxOccurs="1" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="x_populator_parameters">
+		<xs:sequence>
+			<xs:element name="x_populator_parameter" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="parameter" type="xs:string"
+							minOccurs="1" maxOccurs="1" />
+						<xs:element name="value" type="xs:string"
+							minOccurs="1" maxOccurs="1" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="x_validator_parameters">
+		<xs:sequence>
+			<xs:element name="x_validator_parameter" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="parameter" type="xs:string"
+							minOccurs="1" maxOccurs="1" />
+						<xs:element name="value" type="xs:string"
+							minOccurs="1" maxOccurs="1" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="x_options">
+		<xs:sequence>
+			<xs:element name="x_option" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="value" type="xs:string"
+							minOccurs="1" maxOccurs="1" />
+						<xs:element name="label" type="xs:string"
+							minOccurs="1" maxOccurs="1" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="x_logic_type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="String" />
+			<xs:enumeration value="Enum" />
+			<xs:enumeration value="Date" />
+			<xs:enumeration value="Empty" />
+			<xs:enumeration value="DateAndTime" />
+			<xs:enumeration value="MultiString" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- For Dynamic view mode, need to implement in PageBean getDynamicMode method -->
+	<xs:simpleType name="x_view_mode_type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="New" />
+			<xs:enumeration value="Edit" />
+			<xs:enumeration value="View" />
+			<xs:enumeration value="External" />
+			<xs:enumeration value="Dynamic" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="x_field_mode_type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Editable" />
+			<xs:enumeration value="Readonly" />
+			<xs:enumeration value="Hidden" />
+			<xs:enumeration value="Dynamic" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="x_form_versions">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0.1" />
+			<xs:enumeration value="1.0" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="x_ui_type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TextField" />
+			<xs:enumeration value="ComboBox" />
+			<xs:enumeration value="Radio" />
+			<xs:enumeration value="TextArea" />
+			<xs:enumeration value="File" />
+			<xs:enumeration value="Date" />
+			<xs:enumeration value="Label" />
+			<xs:enumeration value="Link" />
+			<xs:enumeration value="Hidden" />
+			<xs:enumeration value="Checkbox" />
+			<xs:enumeration value="ReadOnly" />
+			<xs:enumeration value="Password" />
+			<xs:enumeration value="Button" />
+			<xs:enumeration value="Separator" />
+			<xs:enumeration value="Popup" />
+			<xs:enumeration value="Pickuplist" />
+			<xs:enumeration value="InternalUse" />
+			<xs:enumeration value="Image" />
+			<xs:enumeration value="ButtonLink" />
+			<xs:enumeration value="MultiSelect" />
+			<xs:enumeration value="OpenList" />
+			<xs:enumeration value="PickupMultiSelect" />
+			<xs:enumeration value="CheckboxBoolean" />
+			<xs:enumeration value="AutoComplete" />
+			<xs:enumeration value="Jstree" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="x_events">
+		<xs:sequence>
+			<xs:element name="x_event" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="event_name" type="xs:string"
+							minOccurs="1" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation>
+									The name of the JS event. For
+									example onClick
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="js_code" type="xs:string"
+							minOccurs="1" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation>
+									Java script code
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="visible">
+		<xs:all>
+			<xs:element name="x_field_name" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						The pageBean Boolean property that determines
+						whether this component is visible or not
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="default_value" type="xs:boolean"
+				minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						predefined default value (true/false)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- supported only in row action!!! -->
+			<xs:element name="hold_place" type="xs:boolean"
+				minOccurs="0" maxOccurs="1" default="true">
+				<xs:annotation>
+					<xs:documentation>
+						supported only in row action, possible values:
+						true\false if value is true row actions are
+						displayed with place holders for non-visible
+						actions
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="validate_form">
+		<xs:all>
+			<xs:element name="x_field_name" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						The pageBean Boolean property that determines
+						whether validate form or not
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="default_value" type="xs:boolean"
+				minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						predefined default value (true/false)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>
