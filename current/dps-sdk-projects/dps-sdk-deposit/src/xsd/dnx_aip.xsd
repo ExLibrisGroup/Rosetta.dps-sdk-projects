@@ -812,6 +812,8 @@
 							<xsd:alternative test="@id='userName'" type="nullableString"/>
 							<xsd:alternative test="@id='firstName'" type="nullableString"/>
 							<xsd:alternative test="@id='lastName'" type="nullableString"/>
+							<xsd:alternative test="@id='institution'" type="nullableString"/>
+							<xsd:alternative test="@id='department'" type="nullableString"/>
 							<xsd:alternative test="@id='middleName'" type="nullableString"/>
 							<xsd:alternative test="@id='jobTitle'" type="nullableString"/>
 							<xsd:alternative test="@id='address1'" type="nullableString"/>
@@ -827,7 +829,7 @@
 							<xsd:alternative type="errorType"/>
 						</xsd:element>
 					</xsd:sequence>
-					<xsd:assert test="count(*[@id='producerId']) = (0,1) and count(*[@id='userIdAppId']) = (0,1) and count(*[@id='defaultLanguage']) = (0,1) and count(*[@id='authorativeName']) = (0,1) and count(*[@id='userName']) = (0,1) and count(*[@id='firstName']) = (0,1) and count(*[@id='lastName']) = (0,1) and count(*[@id='middleName']) = (0,1) and count(*[@id='jobTitle']) = (0,1) and count(*[@id='address1']) = (0,1) and count(*[@id='address2']) = (0,1) and count(*[@id='address3']) = (0,1) and count(*[@id='address4']) = (0,1) and count(*[@id='address5']) = (0,1) and count(*[@id='zip']) = (0,1) and count(*[@id='emailAddress']) = (0,1) and count(*[@id='webSiteUrl']) = (0,1) and count(*[@id='telephone1']) = (0,1) and count(*[@id='telephone2']) = (0,1)"/>
+					<xsd:assert test="count(*[@id='producerId']) = (0,1) and count(*[@id='userIdAppId']) = (0,1) and count(*[@id='defaultLanguage']) = (0,1) and count(*[@id='authorativeName']) = (0,1) and count(*[@id='userName']) = (0,1) and count(*[@id='firstName']) = (0,1) and count(*[@id='lastName']) = (0,1) and count(*[@id='institution']) = (0,1) and count(*[@id='department']) = (0,1) and count(*[@id='middleName']) = (0,1) and count(*[@id='jobTitle']) = (0,1) and count(*[@id='address1']) = (0,1) and count(*[@id='address2']) = (0,1) and count(*[@id='address3']) = (0,1) and count(*[@id='address4']) = (0,1) and count(*[@id='address5']) = (0,1) and count(*[@id='zip']) = (0,1) and count(*[@id='emailAddress']) = (0,1) and count(*[@id='webSiteUrl']) = (0,1) and count(*[@id='telephone1']) = (0,1) and count(*[@id='telephone2']) = (0,1)"/>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
